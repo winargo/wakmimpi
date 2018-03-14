@@ -1,0 +1,75 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #000000;
+    color:#fff;
+    height: 75px;
+    overflow: hidden;
+    -webkit-transition: height 0.6s;
+    -moz-transition: height 0.6s;
+    transition: height 0.6s;
+    text-align:center;
+
+}
+.header.shrink {
+    height: 55px;
+}
+.header h1
+{
+    font-size:30px;
+    font-weight:normal;
+    -webkit-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    transition: all 0.6s;
+}
+
+.header.shrink h1
+{
+    font-size:24px;
+    -webkit-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    transition: all 0.6s;
+}
+.Content
+{
+   height: 1000px;
+}
+.header-container{
+    height: 75px;
+    position: absolute;
+    width: 100%;
+}
+.initiate-session{
+    height: 75px;
+    margin: auto;
+    margin-top: 20px;
+    margin-left: 20%;
+    display: inline-block;
+    width: auto;
+    -webkit-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    transition: all 0.6s;
+}
+
+.form-control{
+    display: inline-block;
+}
+.Logo-format{
+    float: left;
+}
+#username-form-control{
+   display: inline-block;
+    width: 38%;
+
+}
+#password-form-control{
+    margin-left: 20px;
+    display: inline-block;
+    width: 38%;
+}
+#button-form-control{
+    margin-top: -5px;
+    margin-left: 20px
+}

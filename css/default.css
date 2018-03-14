@@ -1,0 +1,47 @@
+body{
+    background-image: url("../Images/redbackground.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.logo-format{
+    width: 160px;
+    height: 80px;
+    -webkit-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    transition: all 0.6s;
+    
+}
+.shrink-logo{
+    width: 120px;
+    height: 60px;
+    -webkit-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    transition: all 0.6s;
+}
+.shrink-form{
+    margin-top: 10px;
+    height: 60px;
+    -webkit-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    transition: all 0.6s;
+}
+
+.content-forcer{
+    height: 100px;
+}
+
+#content-wrapper{
+    width: 90%;
+    margin-top: 
+    margin: 0 auto;
+}
+div.left-item-group{
+    width: 35%;
+}
+p{
+ color: white;
+}
+div.right-item-group{
+    width: 65%;
+}
