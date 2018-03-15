@@ -33,15 +33,44 @@ body{
 
 #content-wrapper{
     width: 90%;
-    margin-top: 
+    margin-top: 100px;
     margin: 0 auto;
 }
-div.left-item-group{
+.header-info{
+    margin-left: 10%;
+    width: 95%;
+    margin: 0 auto;
+}
+.left-item-group{
+    background: solid black;
     width: 35%;
+    display: inline-block;
 }
-p{
- color: white;
-}
-div.right-item-group{
+.nav-content{
+    background: solid black;
+    float: right;
     width: 65%;
+}
+.text-info{
+    margin-left: 1%;
+    float: left;
+    margin-bottom: 0;
+    background: black;
+     width: 25%;
+    padding: 5px;
+    color: white !important;
+    text-align: center;
+}
+.text-bright{
+    color: white;
+}
+.text-dark{
+    color: black;
+}
+.text-marquee{
+    background: #222229;
+    float: left;
+    width: 74% ;
+    color: white;
+    padding: 5px;
 }

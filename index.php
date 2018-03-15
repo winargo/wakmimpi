@@ -25,13 +25,18 @@
            <div class="content-forcer">
              
             </div>
+            <div class="header-info">
+                    <p class="text-info"><span class="glyphicon glyphicon-bullhorn"></span>Info Terkini :</p>
+                     <marquee class="text-marquee">Selamat datang di WAKmimpi. Kini telah hadir game terbaru kami, GAME SUWIT tradisional, Jadikanlah anda sebagai pemenang, mudah bukan? tunggu apalagi, gabung & raih kemenangan anda sekarang juga.
+                </marquee>
+                </div>
              <div id="content-wrapper">
-                 <div id="left-item-group">
-                  <p><span class="glyphicon glyphicon-bullhorn"></span>Info Terkini</p>
-              </div>
-              <div id="right-item-group">
-                  <marquee>Selamat datang di WAKmimpi. Kini telah hadir game terbaru kami, GAME SUWIT tradisional, Jadikanlah anda sebagai pemenang, mudah bukan? tunggu apalagi, gabung & raih kemenangan anda sekarang juga.
-            </marquee>
+                
+                 <nav class="left-item-group">
+                     
+                 </nav>
+              <div class="nav-content">
+                  
               </div>
              </div>
              
