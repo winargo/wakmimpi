@@ -1,6 +1,8 @@
 <html>
    <head>
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       
       <link rel="stylesheet" href="css/main-header.css">
       <link rel="stylesheet" href="css/default.css">
@@ -26,14 +28,19 @@
              
             </div>
             <div class="header-info">
-                    <p class="text-info"><span class="glyphicon glyphicon-bullhorn"></span>Info Terkini :</p>
+                    <p class="text-info"><span class="glyphicon glyphicon-bullhorn"></span>  Info Terkini :</p>
                      <marquee class="text-marquee">Selamat datang di WAKmimpi. Kini telah hadir game terbaru kami, GAME SUWIT tradisional, Jadikanlah anda sebagai pemenang, mudah bukan? tunggu apalagi, gabung & raih kemenangan anda sekarang juga.
                 </marquee>
                 </div>
              <div id="content-wrapper">
                 
                  <nav class="left-item-group">
-                     
+                     <ul>
+                      <li><a href="#home">Home</a></li>
+                      <li><a href="#news">News</a></li>
+                      <li><a href="#contact">Contact</a></li>
+                      <li><a href="#about">About</a></li>
+                    </ul>
                  </nav>
               <div class="nav-content">
                   
