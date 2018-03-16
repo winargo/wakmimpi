@@ -32,20 +32,95 @@
                      <marquee class="text-marquee">Selamat datang di WAKmimpi. Kini telah hadir game terbaru kami, GAME SUWIT tradisional, Jadikanlah anda sebagai pemenang, mudah bukan? tunggu apalagi, gabung & raih kemenangan anda sekarang juga.
                 </marquee>
                 </div>
-             <div id="content-wrapper">
-                
-                 <nav class="left-item-group">
-                     <ul>
-                      <li><a href="#home">Home</a></li>
-                      <li><a href="#news">News</a></li>
-                      <li><a href="#contact">Contact</a></li>
-                      <li><a href="#about">About</a></li>
-                    </ul>
-                 </nav>
-              <div class="nav-content">
-                  
-              </div>
-             </div>
+            <div class="jumbotron cont">
+                <div class="container conts">
+                    <div class="row">
+                        <div class="col-md-3 left-nav">
+                            <div class="row">
+                                <a href="#"><div class="col-md-12 menu">
+                                    <h4>Home</h4>
+                                </div></a>
+                                <a href="./pages/history_nomor.php"><div class="col-md-12 menu">
+                                    <h4>History Nomor</h4>
+                                </div></a>
+                                <a href="./pages/how_to_play.php"><div class="col-md-12 menu">
+                                    <h4>Cara Bermain</h4>
+                                </div></a>
+                                <a href="./pages/buku_mimpi.php"><div class="col-md-12 menu">
+                                    <h4>Buku Mimpi</h4>
+                                </div></a>
+                                <a href="./pages/help.php"><div class="col-md-12 menu">
+                                    <h4>Bantuan</h4>
+                                </div></a>
+                            </div>
+                            <div class="container">
+                                <div class="col-md-12 keberuntungan">
+                                    <h3>ANGKA KEBERUNTUNGAN ANDA HARI INI</h3>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <a href="#"><div class="col-md-12"> <img src="./Images/banner2.jpg" alt="togel" class="img-responsive"> </div></a>
+                                <a href="#"><div class="col-md-12"> <img src="./Images/banner.jpg" alt="togel" class="img-responsive"> </div></a>
+                            </div>
+                        </div>
+                        <div class="col-md-9 content-wrap">
+                        <div class="container">
+                            <div id="myCarousel" class="carousel slide img-slide" data-ride="carousel">
+                        <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                            </ol>
+
+                            <!-- Wrapper for    slides -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                <img src="./Images/main_baner.jpg" alt="Los Angeles">
+                                </div>
+                            </div>
+
+                            <!-- Left and right controls -->
+                            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                            </div>
+                            <div class="row card-sect">
+                                <div class="col-md-3 cards">
+                                    <div class="container">
+                                        <h4>Sydney</h4>
+                                        <h2>11111</h2>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 cards">
+                                    <div class="container">
+                                        <h4>Sydney</h4>
+                                        <h2>11111</h2>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 cards">
+                                    <div class="container">
+                                        <h4>Sydney</h4>
+                                        <h2>11111</h2>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 cards">
+                                    <div class="container">
+                                        <h4>Sydney</h4>
+                                        <h2>11111</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
              
               
          <!--     -->
