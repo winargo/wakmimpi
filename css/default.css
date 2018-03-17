@@ -83,21 +83,21 @@ body{
     background: rgba(255, 255, 255, 0);
 }
 .left-nav {
-    background: #222229;
+    background: #8b0000;
     padding: 10px;
     height: auto;
 
 }
 .conts {
-    background: #222229;
+    background: #8b0000;
 }
 .content-wrap {
-    background: #222229;
+    background: #8b0000;
     padding: 10px;
     height: auto;
 }
 .cont {
-    margin-top: 20px;
+    margin-top: -19px;
 }
 .img-slide {
     margin-top: 30px;
@@ -129,7 +129,7 @@ body{
     font-size: 16px;
 }
 .menu:hover {
-    background: red;
+    background: #4d0000;
     font-weight: 100;
     cursor: pointer;
 }
@@ -262,4 +262,8 @@ body{
     background-color:#55010f;
     color:#fff;
     border:0px;
+}
+.container{
+    width: 94%;
+    margin-left: 3.5%;
 }
