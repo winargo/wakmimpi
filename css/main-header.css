@@ -61,13 +61,13 @@
 }
 #username-form-control{
    display: inline-block;
-    width: 38%;
+    width: 35%;
 
 }
 #password-form-control{
     margin-left: 20px;
     display: inline-block;
-    width: 38%;
+    width: 35%;
 }
 #button-form-control{
     margin-top: -5px;

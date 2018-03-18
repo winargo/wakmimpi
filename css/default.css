@@ -267,3 +267,11 @@ body{
     width: 94%;
     margin-left: 3.5%;
 }
+.col-md-3{
+    float: left;
+    width: 25%;
+}
+.col-md-9{
+    width: 74%;
+    float: left;
+}
