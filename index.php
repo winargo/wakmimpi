@@ -37,22 +37,28 @@
                 <div class="container conts">
                     <div class="row">
                         <div class="col-md-3 left-nav">
-                            <div class="row">
-                                <a href="#"><div class="col-md-12 menu">
-                                    <h4>Home</h4>
+                            <div class="row" id="nav-sizing">
+                                <a href="./pages/how_to_play.php"><div class="col-md-12 menu">
+                                    <h4><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;&nbsp;Cara Bermain</h4>
                                 </div></a>
                                 <a href="./pages/history_nomor.php"><div class="col-md-12 menu">
-                                    <h4>History Nomor</h4>
-                                </div></a>
-                                <a href="./pages/how_to_play.php"><div class="col-md-12 menu">
-                                    <h4>Cara Bermain</h4>
+                                    <h4><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;&nbsp;History Nomor</h4>
                                 </div></a>
                                 <a href="./pages/buku_mimpi.php"><div class="col-md-12 menu">
-                                    <h4>Buku Mimpi</h4>
+                                    <h4><span class="glyphicon glyphicon-menu-hamburger"></span>&nbsp;&nbsp;&nbsp;Buku Mimpi</h4>
+                                </div></a>
+                                <a href="./pages/refferal.php"><div class="col-md-12 menu">
+                                    <h4><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;Refferal</h4>
                                 </div></a>
                                 <a href="./pages/help.php"><div class="col-md-12 menu">
-                                    <h4>Bantuan</h4>
+                                    <h4><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;&nbsp;Bantuan</h4>
                                 </div></a>
+                                <a href="./pages/lupa_password.php"><div class="col-md-12 menu">
+                                    <h4><span class="glyphicon glyphicon-calendar"></span>&nbsp;&nbsp;&nbsp;lupa Password</h4>
+                                </div></a>
+                                <a href="./pages/lupa_password.php">
+                                    <button class="col-md-12 daftar">Dafter</button>
+                                </a>
                             </div>
                             <div class="container">
                                 <div class="col-md-12 keberuntungan">

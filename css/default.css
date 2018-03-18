@@ -115,10 +115,14 @@ body{
 }
 .menu {
     color: white;
-    padding: 10px;
+    margin: 0 auto;
+    margin-left: 5px;
+    padding: 5px 10px 5px 10px;
     transition: all 0.4s;
     font-size: 17px;
     text-align: center;
+    border-bottom: 1px solid #4d0000;
+    text-align: left;
 }
 .keberuntungan {
     text-align: center;
@@ -274,4 +278,11 @@ body{
 .col-md-9{
     width: 74%;
     float: left;
+}
+#nav-sizing {
+    width: 98%;
+    margin-left: -1%;
+}
+.daftar{
+    margin-top: 5px;
 }
