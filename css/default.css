@@ -4,6 +4,10 @@ body{
     background-size: cover;
     position: relative;
 }
+h4{
+    margin: 10.5px 0px 10.5px 0px;
+    font-size: 16px;
+}
 .logo-format{
     width: 160px;
     height: 80px;
@@ -22,24 +26,24 @@ body{
 .shrink-form{
     margin-top: 10px;
     height: 60px;
+    margin-left: 39%;
     -webkit-transition: all 0.6s;
     -moz-transition: all 0.6s;
     transition: all 0.6s;
 }
 
 .content-forcer{
-    height: 100px;
+    height:100px;
 }
 
 #content-wrapper{
-    margin-left: 10%;
-    width: 95%;
+    width: 93%;
     z-index: -1;
     margin: 0 auto;
 }
 .header-info{
     margin-left: 10%;
-    width: 95%;
+    width: 93%;
     z-index: -1;
     margin: 0 auto;
 }
@@ -54,14 +58,16 @@ body{
     width: 65%;
 }
 .text-info{
-    margin-left: 1%;
     float: left;
+    vertical-align: middle;
+    height: 35px;
     margin-bottom: 0;
     background: black;
      width: 25%;
-    padding: 5px;
+    padding: 8px 5px 5px 5px;
     color: white !important;
     text-align: center;
+    font-weight: 600;
 }
 .text-bright{
     color: white;
@@ -70,29 +76,30 @@ body{
     color: black;
 }
 .text-marquee{
-    
+    height: 35px;
+    vertical-align: middle;
     background: #222229;
     float: left;
-    width: 74% ;
+    width: 75% ;
     color: white;
     z-index: -1;
-    padding: 5px;
+    padding: 8px 5px 5px 5px;
 }
 .jumbotron {
     margin-bottom: 0;
     background: rgba(255, 255, 255, 0);
 }
 .left-nav {
-    background: #8b0000;
-    padding: 10px;
+    background: #dc0000;
+    padding: 8px;
     height: auto;
 
 }
 .conts {
-    background: #8b0000;
+    background: #dc0000;
 }
 .content-wrap {
-    background: #8b0000;
+    background: #dc0000;
     padding: 10px;
     height: auto;
 }
@@ -117,10 +124,9 @@ body{
     color: white;
     margin: 0 auto;
     margin-left: 5px;
-    padding: 5px 10px 5px 10px;
+    padding: 0px 10px 0px 10px;
     transition: all 0.4s;
-    font-size: 17px;
-    text-align: center;
+    font-weight: 350;
     border-bottom: 1px solid #4d0000;
     text-align: left;
 }
@@ -268,20 +274,26 @@ body{
     border:0px;
 }
 .container{
-    width: 94%;
-    margin-left: 3.5%;
+    width: 93%;
+}
+.caurosel{
+    width: 100%;
+}
+.nmargin{
+     margin-left: 0;
+    margin-right: 0;
 }
 .col-md-3{
     float: left;
-    width: 25%;
+    width: 22%;
 }
 .col-md-9{
-    width: 74%;
+    width: 78%;
     float: left;
 }
 #nav-sizing {
-    width: 98%;
-    margin-left: -1%;
+    width: 100%;
+    margin-left: 2%;
 }
 .daftar{
     margin-top: 5px;

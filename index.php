@@ -12,6 +12,7 @@
        <title>Wakmimpi : Situs Agen Judi Togel Online Singapore Terpercaya</title>
    <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
    <script type="text/javascript" src="js/header.js"></script>
+   <script src="https://secure.livechatinc.com/licence/9238010/v2/get_dynamic_config.js?t=1521552969450&amp;referrer=http%3A%2F%2Fwww.wakmimpi.com%2Fhome&amp;url=http%3A%2F%2Fwww.wakmimpi.com%2Fhome&amp;params=&amp;jsonp=__lc_data_603514"></script>
    </head>
     <body>
         <div class="header">
@@ -39,22 +40,22 @@
                         <div class="col-md-3 left-nav">
                             <div class="row" id="nav-sizing">
                                 <a href="./pages/how_to_play.php"><div class="col-md-12 menu">
-                                    <h4><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;&nbsp;Cara Bermain</h4>
+                                    <h4><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cara Bermain</h4>
                                 </div></a>
-                                <a href="./pages/history_nomor.php"><div class="col-md-12 menu">
-                                    <h4><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;&nbsp;History Nomor</h4>
+                                <a href="http://waktogel.net/hasil_lengkap.php"><div class="col-md-12 menu">
+                                    <h4><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;History Nomor</h4>
                                 </div></a>
                                 <a href="./pages/buku_mimpi.php"><div class="col-md-12 menu">
-                                    <h4><span class="glyphicon glyphicon-menu-hamburger"></span>&nbsp;&nbsp;&nbsp;Buku Mimpi</h4>
+                                    <h4><span class="glyphicon glyphicon-menu-hamburger"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buku Mimpi</h4>
                                 </div></a>
                                 <a href="./pages/refferal.php"><div class="col-md-12 menu">
-                                    <h4><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;Refferal</h4>
+                                    <h4><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Refferal</h4>
                                 </div></a>
                                 <a href="./pages/help.php"><div class="col-md-12 menu">
-                                    <h4><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;&nbsp;Bantuan</h4>
+                                    <h4><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bantuan</h4>
                                 </div></a>
                                 <a href="./pages/lupa_password.php"><div class="col-md-12 menu">
-                                    <h4><span class="glyphicon glyphicon-calendar"></span>&nbsp;&nbsp;&nbsp;lupa Password</h4>
+                                    <h4><span class="glyphicon glyphicon-calendar"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lupa Password</h4>
                                 </div></a>
                                 <a href="./pages/lupa_password.php">
                                     <button class="col-md-12 daftar">Dafter</button>
@@ -71,9 +72,9 @@
                             </div>
                         </div>
                         <div class="col-md-9 content-wrap">
-                        <div class="container">
+                        <div class="container caurosel nmargin">
                         
-                            <div class="container">
+                            <div class="container caurosel">
                               <div id="myCarousel" class="carousel slide" data-ride="carousel">
                                 <!-- Indicators -->
                                 <ol class="carousel-indicators">
