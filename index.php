@@ -10,9 +10,22 @@
       
       
        <title>Wakmimpi : Situs Agen Judi Togel Online Singapore Terpercaya</title>
+       
    <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
    <script type="text/javascript" src="js/header.js"></script>
-   <script src="https://secure.livechatinc.com/licence/9238010/v2/get_dynamic_config.js?t=1521552969450&amp;referrer=http%3A%2F%2Fwww.wakmimpi.com%2Fhome&amp;url=http%3A%2F%2Fwww.wakmimpi.com%2Fhome&amp;params=&amp;jsonp=__lc_data_603514"></script>
+   
+   <script type="text/javascript" async="" src="http://cdn.livechatinc.com/tracking.js"></script>
+   
+   <script type="text/javascript">
+        window.__lc = window.__lc || {};
+        window.__lc.license = 9238010;
+        (function() {
+            var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+            lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+        })();
+    </script>
+  
    </head>
     <body>
         <div class="header">
@@ -174,5 +187,16 @@
               
          <!--     -->
     </div>
+    <script src="https://secure.livechatinc.com/licence/9238010/v2/get_dynamic_config.js?t=1521565531025&amp;referrer=&amp;url=http%3A%2F%2Fwaktogel.net%2F&amp;params=&amp;jsonp=__lc_data_214951"></script>
+    <script src="https://secure.livechatinc.com/licence/9238010/v2/get_static_config.0.149.2.2.252.26.65.2.2.2.2.2.438.js?&amp;jsonp=__lc_data_static_config"></script>
+    <script src="https://secure.livechatinc.com/licence/9238010/v2/localization.id.0.08e34bc77e04532ebc1573440c8ea5b3_270dafc139e68db198cadd94938d83ba.js?jsonp=__lc_lang"></script>
+    <div id="livechat-compact-container" style="position: fixed; bottom: 0px; right: 15px; width: 250px; height: 53px; overflow: hidden; visibility: visible; z-index: 2147483639; background: transparent; border: 0px; transition: transform 0.2s ease-in-out; backface-visibility: hidden; opacity: 1; transform: translateY(0%);"><iframe src="about:blank" id="livechat-compact-view" style="position: relative;top: 20px;left: 0;width: 100%;border: 0;padding: 0;margin: 0;float: none;background: none" scrolling="no" frameborder="0" allowtransparency="true" title="LiveChat Minimized Widget"></iframe><a id="livechat-badge" href="#" onclick="LC_API.show_full_view({source:'minimized click'});return false" style="position: absolute; display: block; visibility: hidden; height: 16px; line-height: 16px; background: rgb(255, 0, 0); color: rgb(255, 255, 255); font-size: 10px; text-decoration: none; width: 16px; border-radius: 50%; box-shadow: none; border-top: 0px; padding: 0px; text-align: center; font-family: Lato, sans-serif; top: 12px; left: 20px; opacity: 0;"></a></div>
+    <div id="livechat-eye-catcher" onmouseover="var els = this.getElementsByTagName(&quot;a&quot;); if (els.length) els[0].style.display = &quot;block&quot;;" onmouseout="var els = this.getElementsByTagName(&quot;a&quot;); if (els.length) els[0].style.display = &quot;none&quot;;" style="position: fixed; right: 12px; bottom: 26px; visibility: visible; z-index: 2147483639; background: transparent; border: 0px; padding: 10px 10px 0px 0px; float: left; margin-right: -10px; backface-visibility: hidden; opacity: 1;">	
+    	<a href="#" onclick="LC_API.hide_eye_catcher();return false" style="position: absolute; display: none; top: -5px; right: -5px; padding: 2px 7px; text-decoration: none; color: rgb(0, 0, 0); font-size: 20px; font-family: Arial, sans-serif;" onmouseover="this.style.color='#666'" onmouseout="this.style.color='#000'">×</a>		<a href="#" onclick="LC_API.open_chat_window({source:'eye catcher'});return false" style="display:block" id="livechat-eye-catcher-img"><img src="//cdn.livechatinc.com/cloud/?uri=http://livechat.s3.amazonaws.com/9238010/0/ec/a979db23a9dbea93a3e66ae575d5cc9b.png" style="border:0;display:block;" alt=""></a></div>
+    <div id="livechat-full" style="position: fixed; bottom: 0px; right: 15px; width: 400px; height: 450px; overflow: hidden; visibility: visible; z-index: 2147483639; background: transparent; border: 0px; transition: transform 0.2s ease-in-out; backface-visibility: hidden; transform: translateY(0%); opacity: 1;"><iframe src="https://secure.livechatinc.com/licence/9238010/open_chat.cgi?groups=0&amp;embedded=1&amp;newWebserv=undefined&amp;__lc_vv=2&amp;session_id=S1520696022.6e1c7014dc&amp;server=secure.livechatinc.com#http://waktogel.net/" id="livechat-full-view" name="livechat-full-view" title="LiveChat Widget" scrolling="no" frameborder="0" allowtransparency="true" style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px; float: none; background: none;" __idm_id__="610256897"></iframe></div>
+    <div id="lc_invite_layer" style="text-align: left; display: none; z-index: 16777261;"></div>
+    <div id="lc_overlay_layer" style="background-color: rgb(0, 0, 0); position: fixed; left: 0px; top: 0px; z-index: 16777260; display: none; width: 100%; height: 100%;"></div>
+    
+    <div id="lc_overlay_layer" style="background-color: rgb(0, 0, 0); position: fixed; left: 0px; top: 0px; z-index: 16777260; display: none; width: 100%; height: 100%;"></div>
     </body>
 </html>
