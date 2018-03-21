@@ -7,18 +7,19 @@ body{
 h4{
     margin: 10.5px 0px 10.5px 0px;
     font-size: 16px;
+    letter-spacing: 0.8px;
 }
-.logo-format{
-    width: 160px;
-    height: 80px;
+.Logo-format{
+    width: 212px;
+    height: 68px;
     -webkit-transition: all 0.6s;
     -moz-transition: all 0.6s;
     transition: all 0.6s;
-    
+    padding-top: 0.5%;
 }
 .shrink-logo{
-    width: 120px;
-    height: 60px;
+    width: 140px;
+    height: 48px;
     -webkit-transition: all 0.6s;
     -moz-transition: all 0.6s;
     transition: all 0.6s;
@@ -26,7 +27,7 @@ h4{
 .shrink-form{
     margin-top: 10px;
     height: 60px;
-    margin-left: 39%;
+    margin-left: 37.7%;
     -webkit-transition: all 0.6s;
     -moz-transition: all 0.6s;
     transition: all 0.6s;
@@ -297,4 +298,56 @@ h4{
 }
 .daftar{
     margin-top: 5px;
+}
+.content-wrap{
+    padding-top: 0;
+    padding-left: 2%;
+}
+.caurosel{
+    padding-right: 6px;
+}
+##button-form-control{
+    margin-top: 3px;
+    margin-left: 10px;
+    width: 16%;
+    height: 38px;
+    background: linear-gradient(#990000,#880000,#770000,#660000,#550000,#440000);
+    border: none;
+   letter-spacing: 2px;
+    font-weight: 600;
+    transition: 0.5s;
+}
+#button-form-control:hover{
+    margin-top: 3px;
+    margin-left: 10px;
+    width: 16%;
+    height: 38px;
+    color: black;
+    background: red;
+    transition: 0.5s;
+    border: none;
+   letter-spacing: 2px;
+    font-weight: 600;
+}{
+    margin-top: 3px;
+    margin-left: 10px;
+    width: 16%;
+    height: 38px;
+    background: linear-gradient(#990000,#880000,#770000,#660000,#550000,#440000);
+    border: none;
+   letter-spacing: 2px;
+    font-weight: 600;
+    transition: 0.5s;
+}
+#button-dafter-control:hover{
+    margin-top: 3px;
+    margin-left: 10px;
+    width: 16%;
+    height: 38px;
+    color: black;
+    background: red;
+    transition: 0.5s;
+    border: none;
+   letter-spacing: 2px;
+    font-weight: 600;
 }
