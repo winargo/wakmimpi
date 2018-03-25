@@ -72,9 +72,9 @@
     width: 31.5%;
 }
 #button-form-control{
-    margin-top: 3px;
+    margin-top: 2px;
     margin-left: 10px;
-    width: 16%;
+    width: 15.5%;
     height: 38px;
     background: linear-gradient(#990000,#880000,#770000,#660000,#550000,#440000);
     border: none;
@@ -83,7 +83,7 @@
     transition: 0.5s;
 }
 #button-form-control:hover{
-    margin-top: 3px;
+    margin-top: 2px;
     margin-left: 10px;
     width: 16%;
     height: 38px;

@@ -25,7 +25,7 @@ h4{
     transition: all 0.6s;
 }
 .shrink-form{
-    margin-top: 10px;
+    margin-top: 5px;
     height: 60px;
     margin-left: 37.7%;
     -webkit-transition: all 0.6s;
@@ -89,6 +89,7 @@ h4{
 .jumbotron {
     margin-bottom: 0;
     background: rgba(255, 255, 255, 0);
+    padding-bottom: 0;
 }
 .left-nav {
     background: #dc0000;
@@ -125,7 +126,6 @@ h4{
     color: white;
     margin: 0 auto;
     margin-left: 5px;
-    padding: 0px 10px 0px 10px;
     transition: all 0.4s;
     font-weight: 350;
     border-bottom: 1px solid #4d0000;
@@ -279,6 +279,7 @@ h4{
 }
 .caurosel{
     width: 100%;
+    padding: 0;
 }
 .nmargin{
      margin-left: 0;
@@ -286,25 +287,27 @@ h4{
 }
 .col-md-3{
     float: left;
-    width: 22%;
+    width: 25%;
 }
 .col-md-9{
-    width: 78%;
+    width: 75%;
     float: left;
 }
 #nav-sizing {
-    width: 100%;
-    margin-left: 2%;
+    width: 84.5%;
+    margin-left: 3.5%;
 }
 .daftar{
     margin-top: 5px;
 }
 .content-wrap{
     padding-top: 0;
-    padding-left: 2%;
+    padding-right: 0;
 }
 .caurosel{
-    padding-right: 6px;
+    padding-left: 0;
+    margin-left: 4px;
+    padding-right: 0;
 }
 ##button-form-control{
     margin-top: 3px;
@@ -350,4 +353,119 @@ h4{
     border: none;
    letter-spacing: 2px;
     font-weight: 600;
+}
+.maingame{
+    width: 100%;
+}
+.jSlots-wrapper {
+    overflow: hidden;
+    height: 20px;
+    display: inline-block; /* to size correctly, can use float too, or width*/
+    border: 1px solid #999;
+}
+
+.random_4d {
+    display:block;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    float: left;
+}
+
+.fancy .jSlots-wrapper {
+    overflow: hidden;
+    height: 50px;
+    display: inline-block; /* to size correctly, can use float too, or width*/
+    border: 1px solid #999;
+}
+.fancy .random_4d li {
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #dcbd13;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);
+    font-family: tahoma;
+    border-left: 1px solid #852d40;
+}
+.fancy .random_4d:first-child li {
+    border-left: none;
+}
+.fancy .random_4d li span {
+    display: block;
+}
+.button_random{
+    width:205px;
+    height:35px;
+    background-color:#55010f;
+    color:#fff;
+    border:0px;
+}
+.button_href{
+    width:205px;
+    height:35px;
+    background-color:#55010f;
+    color:#fff;
+    border:0px;
+}
+.ezslots{
+    background-color: #660000;
+    color: white;
+    font-size: 20pt;
+    border: 1px solid #330000;
+    width: 205px;
+    height: auto;
+}
+.daftar{
+    height: 38px;
+    background: linear-gradient(#990000,#880000,#770000,#660000,#550000,#440000);
+    border: 1px solid black;
+    font-weight: 600;
+    margin-left: 9%;
+    margin-top: 6%;
+   letter-spacing: 1.5px;
+    width: 97%;
+}
+.afterdaftar{
+    margin:  0 auto;
+    margin-top: 10px;
+
+}
+.ezslots,.button_random{
+    margin-left: 7%;
+}
+.sometext{
+   background: black;
+}
+.widget{
+    background: black;
+     width: 88.5%;
+    margin: 0 auto;
+}
+h1{
+    color: white;
+}
+body{
+    color: white;
+}
+body a{
+    color: black;
+}
+.col-md-bottom{
+    background: #001e00;
+    height: 10px;
+}
+.copyright{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+    background: black;
+}
+.colortext{
+    color: #ffb400;
+}
+.widthauto{
+    height: auto;
 }
