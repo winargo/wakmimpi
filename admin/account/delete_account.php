@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html>
-<?php
+    <?php
+error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
     session_start();
     include("blockadmin.php");
+$_SESSION["error"]="";
+if($_POST['username']=="" || $_POST['username']==null){
+    header("Location: list_accounts.php");
+                    exit;
+}
     ?>
+<html>
 <head>
     <title>Wakmimpi</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -412,32 +418,35 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
         <ul class="nav sidebar-nav">
             <li class="sidebar-brand">
-                <a href="#">
-                    adminjr                </a>
+                <a href="list_accounts.php">
+                    <?php 
+                    echo 'Welcome, ';
+                    echo $_SESSION['adminname'] ;
+                    ?>                </a>
             </li>
             <li>
-                <a href="../account/list_accounts.php">Account</a>
+                <a href="./list_accounts.php">Account</a>
             </li>
             <li>
-                <a href="../account/list_cs.php">Customer Service</a>
+                <a href="./list_cs.php">Customer Service</a>
             </li>
             <li>
-                <a href="../account/cara_bermain.php">Cara Bermain</a>
+                <a href="./cara_bermain.php">Cara Bermain</a>
             </li>
             <li>
-                <a href="../account/meta.php">Meta</a>
+                <a href="./meta.php">Meta</a>
             </li>
             <li>
-                <a href="../account/info_terkini.php">Info Terkini</a>
+                <a href="./info_terkini.php">Info Terkini</a>
             </li>
             <li>
-                <a href="../account/buku_mimpi.php">Buku Mimpi</a>
+                <a href="./buku_mimpi.php">Buku Mimpi</a>
             </li>
             <li>
-                <a href="../account/history_nomor.php">History Nomor</a>
+                <a href="./history_nomor.php">History Nomor</a>
             </li>
             <li>
-                <a href="../account/daftar_banner.php">Banner</a>
+                <a href="./daftar_banner.php">Banner</a>
             </li>
             <li>
                 <a href="#">Log Out</a>
@@ -452,37 +461,31 @@
             <span class="hamb-top"></span>
             <span class="hamb-middle"></span>
             <span class="hamb-bottom"></span>
-        </button><div class="container">
-    <h2>Register Customer Service</h2>
-    <hr>
-    <form action="" method="post" id="form_meta">
-        <div class="form-group">
-            <label>Brand</label>
-            <select class="form-control" name="social_media_brand">
-                <option value="">Pilih</option>
-                                <option value="1" >Whatsapp</option>
-                                <option value="2" >Line</option>
-                                <option value="3" >yahoo</option>
-                                <option value="4" >facebook</option>
-                                <option value="5" >bbm</option>
-                                <option value="6" >sms</option>
-                            </select>
-            <div class="form_error"></div>
-        </div>
-        <div class="form-group">
-            <label>User</label>
-            <input type="text" class="form-control" name="social_media_user" value="">
-            <div class="form_error"></div>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary">
-        </div>
-    </form>
-</div>
-<style>
-    #form_meta textarea
-    {
-        height:100px;
-    }
-
-</style>
+        </button>
+    <div class="container">
+        <h2>Delete Admin Account</h2>
+        <hr>
+        <form action="deleteadmin.php" method="post">
+            <div class="form-group">
+               <input type="hidden" name="oldusername" class="form-control" value='<?php echo $_POST['username'] ; ?>'>
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" value='<?php echo $_POST['username'] ; ?>' disabled>
+                <span class="form_error"></span>
+            </div>
+                            <div class="form-group">
+                <label for="username">password</label>
+                <input type="password" name="password" class="form-control" value="" placeholder="Input password to proceed">
+                <span class="form_error"></span>
+            </div>
+<?php
+        if($_SESSION["error"]==null){
+            $_SESSION["error"]="";
+        }
+        if($_SESSION["error"]!=""){
+        echo '<p>'.$_SESSION["error"].'</p>';
+            $_SESSION["error"]="";
+        }
+        ?>
+            <input type="submit" id="save" class="btn btn-primary" value="Kirim" tabindex="11">
+        </form>
+    </div>

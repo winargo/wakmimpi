@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+    <?php
+error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+    session_start();
+    include("blockadmin.php");
+$_SESSION["error"]="";
+if($_POST['username']=="" || $_POST['username']==null){
+   // header("Location: list_accounts.php");
+     //               exit;
+}
+    ?>
 <html>
 <head>
     <title>Wakmimpi</title>
@@ -408,8 +418,11 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
         <ul class="nav sidebar-nav">
             <li class="sidebar-brand">
-                <a href="#">
-                    adminjr                </a>
+                <a href="list_accounts.php">
+                    <?php 
+                    echo 'Welcome, ';
+                    echo $_SESSION['adminname'] ;
+                    ?>                </a>
             </li>
             <li>
                 <a href="./list_accounts.php">Account</a>
@@ -436,7 +449,7 @@
                 <a href="./daftar_banner.php">Banner</a>
             </li>
             <li>
-                <a href="#">Log Out</a>
+                <a href="./logout.php">Log Out</a>
             </li>
         </ul>
     </nav>
@@ -452,21 +465,50 @@
     <div class="container">
         <h2>Edit Admin Account</h2>
         <hr>
-        <form action="" method="post">
+        <form action="changenameadmin.php" method="post">
             <div class="form-group">
+               <input type="hidden" name="oldusername" class="form-control" value='<?php echo $_POST['username'] ; ?>'>
                 <label for="username">Username</label>
-                <input type="text" name="username" class="form-control" value="adminjr">
+                <input type="text" name="username" class="form-control" value='<?php echo $_POST['username'] ; ?>'>
+                <span class="form_error"></span>
+            </div>
+                            <div class="form-group">
+                <label for="username">password</label>
+                <input type="password" name="password" class="form-control" value="" placeholder="Input password to proceed">
                 <span class="form_error"></span>
             </div>
 
                             <div class="form-group">
                     <label for="status_admin">Status</label>
                     <br>
-                    <input type="radio" name="status_admin" value="1"  checked="checked" ><label>Active</label>
-                    <input type="radio" name="status_admin" value="0" ><label>Unactive</label>
+                    <?php
+                                if($_POST['status']==0){
+                                    echo "
+                                    <input type='radio' name='status_admin' value='1'  ><label>Active</label>
+                                    <input type='radio' name='status_admin' value='0' checked='checked'  ><label>Unactive</label>
+                                    ";
+                                }
+                                else{
+                                    echo "
+                                    <input type='radio' name='status_admin' value='1'  checked='checked' ><label>Active</label>
+                                    <input type='radio' name='status_admin' value='0' ><label>Unactive</label>
+                                    ";
+                                }
+                                ?>
+                    
+                    
                     <span class="form_error"></span>
                 </div>
 
+           <?php
+        if($_SESSION["error"]==null){
+            $_SESSION["error"]="";
+        }
+        if($_SESSION["error"]!=""){
+        echo '<p>'.$_SESSION["error"].'</p>';
+            $_SESSION["error"]="";
+        }
+        ?>
             <input type="submit" id="save" class="btn btn-primary" value="Kirim" tabindex="11">
         </form>
     </div>

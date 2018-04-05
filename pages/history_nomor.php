@@ -37,31 +37,36 @@
                 <div class="container conts">
                     <div class="row">
                         <div class="col-md-3 left-nav">
-                            <div class="row">
-                                <a href="../index.php"><div class="col-md-12 menu">
-                                    <h4>Home</h4>
+                            <div class="row" id="nav-sizing">
+                                <a href="./pages/how_to_play.php"><div class="col-md-12 menu">
+                                    <h4><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;&nbsp;Cara Bermain</h4>
                                 </div></a>
-                                <a href="./history_nomor.php"><div class="col-md-12 menu">
-                                    <h4>History Nomor</h4>
+                                <a href="http://waktogel.net/hasil_lengkap.php"><div class="col-md-12 menu">
+                                    <h4><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;&nbsp;History Nomor</h4>
                                 </div></a>
-                                <a href="./how_to_play.php"><div class="col-md-12 menu">
-                                    <h4>Cara Bermain</h4>
+                                <a href="./pages/buku_mimpi.php"><div class="col-md-12 menu">
+                                    <h4><span class="glyphicon glyphicon-menu-hamburger"></span>&nbsp;&nbsp;&nbsp;Buku Mimpi</h4>
                                 </div></a>
-                                <a href="./buku_mimpi.php"><div class="col-md-12 menu">
-                                    <h4>Buku Mimpi</h4>
+                                <a href="./pages/refferal.php"><div class="col-md-12 menu">
+                                    <h4><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;Refferal</h4>
                                 </div></a>
-                                <a href="./help.php"><div class="col-md-12 menu">
-                                    <h4>Bantuan</h4>
+                                <a href="./pages/help.php"><div class="col-md-12 menu">
+                                    <h4><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;&nbsp;Bantuan</h4>
                                 </div></a>
+                                <a href="./pages/lupa_password.php"><div class="col-md-12 menu">
+                                    <h4><span class="glyphicon glyphicon-calendar"></span>&nbsp;&nbsp;&nbsp;Lupa Password</h4>
+                                </div></a>
+                                <a href="./pages/lupa_password.php">
+                                    <button class="btn btn-primary daftar">Daftar</button>
+                                </a>
                             </div>
-                            <div class="container">
-                                <div class="col-md-12 keberuntungan">
-                                    <h3>ANGKA KEBERUNTUNGAN ANDA HARI INI</h3>
-                                </div>
-                            </div>
-                            <div class="container">
-                                <a href="#"><div class="col-md-12"> <img src="../Images/banner2.jpg" alt="togel" class="img-responsive"> </div></a>
-                                <a href="#"><div class="col-md-12"> <img src="../Images/banner.jpg" alt="togel" class="img-responsive"> </div></a>
+                            <div class="container afterdaftar">
+                               <div id="ezslots1"></div>
+                                <button class="button_random" id="gogogo1">LUCKY NUMBER</button>
+                                
+                                <!--
+                                tambah gitu disini
+                                -->
                             </div>
                         </div>
                         <div class="col-md-9 content-wrap htp">

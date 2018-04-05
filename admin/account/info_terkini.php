@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+<?php
+error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+    session_start();
+    include("blockadmin.php");
+$_SESSION["error"]="";
+    ?>
 <head>
     <title>Wakmimpi</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -408,8 +414,11 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
         <ul class="nav sidebar-nav">
             <li class="sidebar-brand">
-                <a href="#">
-                    adminjr                </a>
+                <a href="list_accounts.php">
+                    <?php 
+                    echo 'Welcome, ';
+                    echo $_SESSION['adminname'] ;
+                    ?>                </a>
             </li>
             <li>
                 <a href="./list_accounts.php">Account</a>
@@ -436,7 +445,7 @@
                 <a href="./daftar_banner.php">Banner</a>
             </li>
             <li>
-                <a href="#">Log Out</a>
+                <a href="./logout.php">Log Out</a>
             </li>
         </ul>
     </nav>

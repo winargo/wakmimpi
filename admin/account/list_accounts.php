@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+    <?php
+error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+    session_start();
+    include("blockadmin.php");
+$_SESSION["error"]="";
+    ?>
 <html>
 <head>
     <title>List User</title>
@@ -8,6 +14,10 @@
     <link rel="stylesheet" href="../../css/select2.min.css">
     <script src="../../js/select2.min.js"></script>
     <script src="../../js/jquery-ui-1.9.2.custom.min.js"></script>
+    
+    <script src="../../js/deafult.js" type="text/javascript"></script>
+    
+    
 </head>
 <script>
     $(document).ready(function () {
@@ -49,6 +59,10 @@
         cursor: pointer;
         border-radius:8px;
     }
+    #notbutton{
+        background: none;
+        border: none;
+    }
 
     .dropdown {
         position: relative;
@@ -64,11 +78,21 @@
         z-index: 1;
     }
 
-    .dropdown-content a {
+    #notbutton {
         color: black;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
+        width: 100%;
+        height: auto;
+    }
+    #notbutton:hover {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: auto;
     }
 
     .dropdown-content a:hover {background-color: #f1f1f1}
@@ -408,8 +432,11 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
         <ul class="nav sidebar-nav">
             <li class="sidebar-brand">
-                <a href="#">
-                    adminjr                </a>
+                <a href="list_accounts.php">
+                    <?php 
+                    echo 'Welcome, ';
+                    echo $_SESSION['adminname'] ;
+                    ?>                </a>
             </li>
             <li>
                 <a href="./list_accounts.php">Account</a>
@@ -418,22 +445,25 @@
                 <a href="./list_cs.php">Customer Service</a>
             </li>
             <li>
-                <a href="#">Cara Bermain</a>
+                <a href="./cara_bermain.php">Cara Bermain</a>
             </li>
             <li>
-                <a href="#">Meta</a>
+                <a href="./meta.php">Meta</a>
             </li>
             <li>
-                <a href="#">Info Terkini</a>
+                <a href="./info_terkini.php">Info Terkini</a>
             </li>
             <li>
-                <a href="#">Buku Mimpi</a>
+                <a href="./buku_mimpi.php">Buku Mimpi</a>
             </li>
             <li>
-                <a href="#">History Nomor</a>
+                <a href="./history_nomor.php">History Nomor</a>
             </li>
             <li>
-                <a href="#">Banner</a>
+                <a href="./daftar_banner.php">Banner</a>
+            </li>
+            <li>
+                <a href="./logout.php">Log Out</a>
             </li>
            <!-- <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
@@ -452,9 +482,6 @@
             <li>
                 <a href="#">Contact</a>
             </li>-->
-            <li>
-                <a href="#">Log Out</a>
-            </li>
         </ul>
     </nav>
     <!-- /#sidebar-wrapper -->
@@ -470,6 +497,15 @@
         <h2>Daftar Akun Admin
         </h2>
         <hr>
+        <?php
+        if($_SESSION["error"]==null){
+            $_SESSION["error"]="";
+        }
+        if($_SESSION["error"]!=""){
+        echo '<p>'.$_SESSION["error"].'</p>';
+            $_SESSION["error"]="";
+        }
+        ?>
         <div class="left">
         </div>
         <div class="col-md-12">
@@ -484,42 +520,65 @@
                     <th>No</th>
                     <th>Username</th>
                     <th>Status</th>
+                    <th>Online</th>
                     <th>Action</th>
                 </tr>
-                                    <tr>
-                        <td>1</td>
-                        <td>asd (#1)</td>
-                                                    <td><span class="btn btn-success">Active</span></td>
-                                                <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="./edit_account.php">Edit</a>
-                                    <a href="">View</a>
-                                    <a href="change_password.php">Ganti Password</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
+                                   
+                                <?php
+                   
+                    include('db_connect.php');
+                    $user=$_SESSION["adminname"];
+                    $sql = "Select * from `xuser` where username!='".$user."'" ;
+                    $result = mysqli_query($conn,$sql);
+                    $a=1;
+                    while( $row = mysqli_fetch_assoc( $result ) ){
+                        
+            echo "
+            <tr>
+              <td id='1'>$a</td>
+              <td>".$row['username']."</td>";
+                        if($row['Status']==1){
+                            echo "<td>Active</td>";
+                        }
+                        else{
+                            echo "<td>Unactive</td>";
+                        }
+              
+                        if ($row['online']==0){echo "<td style='color:red;'>Offline</td>";}else{echo "<td style='color:green;'>Online</td>";};
+              echo "</td>
+              <td>
+            
+            <div class='dropdown'>
+                                <button class='dropbtn'>Pilih</button>
+                                <div class='dropdown-content'>
+                                    
+                                    <form id='submit1form' action='edit_account.php' method='post'>
+                                        <input type='hidden' name='username' value='".$row['username']."'>
+                                        <input type='hidden' name='status' value='".$row['Status']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a><button id='notbutton'  type='submit'>Edit</button></a>
+                                        
+                                    </form>
+                                    <form id='submit2form' action='change_password.php' method='post'>
+                                        <input type='hidden' name='username' value='".$row['username']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a><button id='notbutton' type='submit'>Ganti Password</button></a>
+                                        
+                                    </form>
+                                    <form id='submit3form' action='delete_account.php' method='post'>
+                                        <input type='hidden' name='username' value='".$row['username']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Delete</button></a>
+                                        
+                                    </form>
                                 </div>
                             </div>
-                            </ul>
-                        </td>
-                    </tr>
-                                    <tr>
-                        <td>2</td>
-                        <td>adminjr (#5)</td>
-                                                    <td><span class="btn btn-success">Active</span></td>
-                                                <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="./edit_account.php">Edit</a>
-                                    <a href="">View</a>
-                                    <a href="./change_password.php">Ganti Password</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
-                                </div>
-                            </div>
-                            </ul>
-                        </td>
-                    </tr>
+            
+            </td>
+            </tr>";
+                    $a++;
+                    }
+                    ?>
                             </table>
         </div>
     </div>

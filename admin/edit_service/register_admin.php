@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<?php
+    session_start();
+    include("blockadmin.php");
+    ?>
+++<head>
     <title>Wakmimpi</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -18,6 +22,8 @@
         trigger.click(function () {
             hamburger_cross();
         });
+        
+        
 
         function hamburger_cross() {
 
@@ -452,7 +458,7 @@
     <div class="container">
         <h2>Register Admin</h2>
         <hr>
-        <form action="" method="post">
+        <form action="adminsetup.php" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" class="form-control" value="">
@@ -467,17 +473,25 @@
 
                 <div class="form-group">
                     <label for="re_password">Ketik ulang password Baru</label>
-                    <input type="password" name="re_password" class="form-control">
+                    <input type="password" name="repassword" class="form-control">
                     <span class="form_error"></span>
                 </div>
                             <div class="form-group">
                     <label for="status_admin">Status</label>
                     <br>
-                    <input type="radio" name="status_admin" value="1"  ><label>Active</label>
-                    <input type="radio" name="status_admin" value="0" ><label>Unactive</label>
+                    <input type="radio" name="status" value="1" checked="checked"><label>Active</label>
+                    <input type="radio" name="status" value="0" ><label>Unactive</label>
                     <span class="form_error"></span>
                 </div>
-
+                 <?php
+        if($_SESSION["error"]==null){
+            $_SESSION["error"]="";
+        }
+        if($_SESSION["error"]!=""){
+        echo '<p>'.$_SESSION["error"].'</p>';
+            $_SESSION["error"]="";
+        }
+        ?>
             <input type="submit" id="save" class="btn btn-primary" value="Kirim" tabindex="11">
         </form>
     </div>

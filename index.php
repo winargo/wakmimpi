@@ -11,7 +11,7 @@
 
       
       
-       <title>Wakmimpi : Situs Agen Judi Tebak Nomor Online Singapore Terpercaya</title>
+       <title>Wakmimpi : Situs Agen tebak nomor Tebak Nomor Online Singapore Terpercaya</title>
        
    <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
    <script type="text/javascript" src="js/header.js"></script>
@@ -29,19 +29,21 @@
     </script>
    <script src="http://wakmimpi.com/assets/js/jquery.jSlots.min.js" type="text/javascript" charset="utf-8"></script>
   
-  
+  <script src="./js/jquery-1.11.3.js"></script>
+        <script src="./js/jquery.easing.1.3.js"></script>
+        <script src="./js/ezslots.js"></script>
+        
+        <link href="./css/ezslots.css" rel="stylesheet" type="text/css" />
   
    </head>
     <body>
-        <script src="./js/jquery-1.11.3.js"></script>
-        <script src="./js/jquery.easing.1.3.js"></script>
-        <script src="./js/ezslots.js"></script>
+        
     
-        <link href="./css/ezslots.css" rel="stylesheet" type="text/css" />
+        
        
         <div class="header">
              <div class="header-container">
-              <img class="Logo-format" src="http://waktogel.net/assets/img/hf/logo.png">
+              <img class="Logo-format" src="http://waktoto.net/assets/img/hf/logo.png">
               <form class="initiate-session" method="post">
                   <input class="form-control" id="username-form-control" type="text" placeholder="Username">
                   <input class="form-control" id="password-form-control" type="password" placeholder="Password">
@@ -66,7 +68,7 @@
                                 <a href="./pages/how_to_play.php"><div class="col-md-12 menu">
                                     <h4><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;&nbsp;Cara Bermain</h4>
                                 </div></a>
-                                <a href="http://waktogel.net/hasil_lengkap.php"><div class="col-md-12 menu">
+                                <a href="http://waktoto.net/hasil_lengkap.php"><div class="col-md-12 menu">
                                     <h4><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;&nbsp;History Nomor</h4>
                                 </div></a>
                                 <a href="./pages/buku_mimpi.php"><div class="col-md-12 menu">
@@ -81,15 +83,17 @@
                                 <a href="./pages/lupa_password.php"><div class="col-md-12 menu">
                                     <h4><span class="glyphicon glyphicon-calendar"></span>&nbsp;&nbsp;&nbsp;Lupa Password</h4>
                                 </div></a>
-                                <a href="./pages/lupa_password.php">
+                                <a href="http://waktoto.net/register.php">
                                     <button class="btn btn-primary daftar">Daftar</button>
                                 </a>
                             </div>
                             <div class="container afterdaftar">
                                <div id="ezslots1"></div>
                                 <button class="button_random" id="gogogo1">LUCKY NUMBER</button>
-                                <a href="#"><div class="col-md-12"> <img src="./Images/banner2.jpg" alt="togel" class="img-responsive"> </div></a>
-                                <a href="#"><div class="col-md-12"> <img src="./Images/banner.jpg" alt="togel" class="img-responsive"> </div></a>
+                                
+                                <!--
+                                tambah gitu disini
+                                -->
                             </div>
                         </div>
                         <div class="col-md-9 content-wrap">
@@ -203,7 +207,7 @@
           <div class="widget">
                         <p>
                         </p><h1> Daftar Bandar Agen Tebak Nomor Online Terpercaya, dan Terbesar 2018</h1>
-                WakMimpi merupakan situs judi online terpercaya, terbesar dan terbaik di sepanjang tahun 2018 yang fokus di permainan Tebak Nomor online. Dengan menjadi member WakMimpi, anda juga akan mendapatkan bocoran nomor togel, prediksi angka Tebak Nomor dan info Tebak Nomor Singapura, Hongkong. Keamananan dan kerahasian data member kami yang sangat terjaga melalui enkripsi tingkat tinggi telah menobatkan kami sebagai Bandar Agen Tebak Nomor Online Terpercaya 2018. <a href="www.waktoto.com/">WakMimpi</a> <a href="www.waktoto.com/">Togel</a> <a href="www.waktoto.com/">Togel Online</a>
+                WakMimpi merupakan situs tebak nomor online terpercaya, terbesar dan terbaik di sepanjang tahun 2018 yang fokus di permainan Tebak Nomor online. Dengan menjadi member WakMimpi, anda juga akan mendapatkan bocoran nomor togel, prediksi angka Tebak Nomor dan info Tebak Nomor Singapura, Hongkong. Keamananan dan kerahasian data member kami yang sangat terjaga melalui enkripsi tingkat tinggi telah menobatkan kami sebagai Bandar Agen Tebak Nomor Online Terpercaya 2018. <a href="www.waktoto.com/">WakMimpi</a> <a href="www.waktoto.com/">Togel</a> <a href="www.waktoto.com/">Togel Online</a>
                 <a href="www.waktoto.com/">Togel Singapura</a> <a href="www.waktoto.com/">Togel Hongkong</a> <a href="www.waktoto.com/">Agen Togel</a>  <a href="www.waktoto.com/">Daftar Togel</a> <a href="www.waktoto.com/">WakMimpi</a>
                 <a href="www.waktoto.com/">Info Togel</a>
 
