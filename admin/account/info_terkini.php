@@ -405,6 +405,26 @@ $_SESSION["error"]="";
         background-color: #4CAF50;
     }
 
+    #notbutton{
+        background: none;
+        border: none;
+    }
+    #notbutton {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    #notbutton:hover {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
 </style>
 
 <body>
@@ -461,7 +481,7 @@ $_SESSION["error"]="";
     <div class="container">
         <h2>Info Terkini</h2>
         <hr>
-        <form action="" method="post">
+        <form action="tambah_berita.php" method="post">
             <div class="form-group">
                 <input type="text" name="breaking_news" class="form-control" value="" placeholder="Tambahkan disini untuk menambahkan berita terkini">
                 <span class="form_error"></span>
@@ -478,21 +498,79 @@ $_SESSION["error"]="";
                     <th>Tanggal dibuat</th>
                     <th>Action</th>
                 </tr>
-                                    <tr>
-                        <td>1</td>
-                        <td>Selamat datang di wakmimpi. situs online terbesar di dunia</td>
-                        <td>2017-12-18 17:39:01</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="#">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
+                         <?php
+                   
+                    include('db_connect.php');
+                    $user=$_SESSION["adminname"];
+                    $sql = "Select * from `header`" ;
+                    $result = mysqli_query($conn,$sql);
+                    $a=1;
+                    while( $row = mysqli_fetch_assoc( $result ) ){
+                        
+            echo "
+            <tr>
+              <td id='1'>$a</td>";
+                        //1.whatsapp
+                        //2.bbm
+                        //3.line
+                        //4.sms
+                        //5.telepon
+                        //6. yahoo
+                        //7. gmail
+                        //8. facebook
+                            echo "<td>".$row['isi_berita']."</td>";
+                        
+              echo "<td>".$row['created']."</td>
+              <td>
+            
+            <div class='dropdown'>
+                                <button class='dropbtn'>Pilih</button>
+                                <div class='dropdown-content'>
+                                    <form id='submit1form' action='../edit_service/' method='post'>
+                                        <input type='hidden' name='date' value='".$row['created']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a><button id='notbutton'  type='submit'>Edit</button></a>
+                                        
+                                    </form>
+                                    ";
+                        if($row['aktif']==1){
+                            echo "<form id='submit3form' action='../edit_service/aktifkanberita.php' method='post'>
+                                        <input type='hidden' name='date' value='".$row['created']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Aktifkan</button></a>
+                                        
+                                    </form>
+                                    <form id='submit3form' action='../edit_service/deleteberita.php' method='post'>
+                                        <input type='hidden' name='date' value='".$row['created']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Delete</button></a>
+                                        
+                                    </form>";
+                        }
+                        else{
+                            echo " <form id='submit3form' action='../edit_service/nonaktifkanberita.php' method='post'>
+                                        <input type='hidden' name='date' value='".$row['created']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Non Aktifkan</button></a>
+                                        
+                                    </form>
+                                    <form id='submit3form' action='../edit_service/deleteberita.php' method='post'>
+                                        <input type='hidden' name='date' value='".$row['created']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Delete</button></a>
+                                        
+                                    </form>";
+                        }
+                                    
+                            echo        "
                                 </div>
                             </div>
-                            </ul>
-                        </td>
-                    </tr>
+            
+            </td>
+            </tr>";
+                    $a++;
+                    }
+                    ?>
                             </table>
         </div>
     </div>

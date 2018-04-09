@@ -455,27 +455,50 @@
         </button><div class="container">
     <h2>Register Customer Service</h2>
     <hr>
-    <form action="" method="post" id="form_meta">
+    <form action="cs_createsetup.php" method="post" id="form_meta">
         <div class="form-group">
             <label>Brand</label>
-            <select class="form-control" name="social_media_brand">
+            <select class="form-control" name="sosmedbrand" required>
                 <option value="">Pilih</option>
                                 <option value="1" >Whatsapp</option>
-                                <option value="2" >Line</option>
-                                <option value="3" >yahoo</option>
-                                <option value="4" >facebook</option>
-                                <option value="5" >bbm</option>
-                                <option value="6" >sms</option>
+                                <option value="2" >BBM</option>
+                                <option value="3" >Line</option>
+                                <option value="4" >Sms</option>
+                                <option value="5" >Telepon</option>
+                                <option value="6" >Yahoo</option>
+                                <option value="7" >Gmail</option>
+                                <option value="8" >Facebook</option>
+                                
+                                
+                                <?php
+                                 //1.whatsapp
+                        //2.bbm
+                        //3.line
+                        //4.sms
+                        //5.telepon
+                        //6. yahoo
+                        //7. gmail
+                        //8. facebook
+                ?>
                             </select>
             <div class="form_error"></div>
         </div>
         <div class="form-group">
-            <label>User</label>
-            <input type="text" class="form-control" name="social_media_user" value="">
+            <label>User Contact</label>
+            <input type="text" class="form-control" name="sosmed" value="" required>
             <div class="form_error"></div>
         </div>
+        <?php
+        if($_SESSION["error"]==null){
+            $_SESSION["error"]="";
+        }
+        if($_SESSION["error"]!=""){
+        echo '<p>'.$_SESSION["error"].'</p>';
+            $_SESSION["error"]="";
+        }
+        ?>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary">
+            <input type="submit" class="btn btn-primary" value="Tambah">
         </div>
     </form>
 </div>

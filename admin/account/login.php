@@ -1,6 +1,10 @@
 <?php
     error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
     session_start();
+if($_SESSION['adminname']!=""){
+    header ("Location: list_accounts.php");
+    exit;
+}
     include ('db_connect.php');
 ?>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

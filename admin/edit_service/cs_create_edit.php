@@ -1,23 +1,17 @@
 <!DOCTYPE html>
-    <?php
-error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+<html>
+<?php
     session_start();
     include("blockadmin.php");
-$_SESSION["error"]="";
     ?>
-<html>
 <head>
-    <title>List User</title>
+    <title>Wakmimpi</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../../css/select2.min.css">
     <script src="../../js/select2.min.js"></script>
     <script src="../../js/jquery-ui-1.9.2.custom.min.js"></script>
-    
-    <script src="../../js/deafult.js" type="text/javascript"></script>
-    
-    
 </head>
 <script>
     $(document).ready(function () {
@@ -59,26 +53,7 @@ $_SESSION["error"]="";
         cursor: pointer;
         border-radius:8px;
     }
-    #notbutton{
-        background: none;
-        border: none;
-    }
-    #notbutton {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        width: 100%;
-        height: auto;
-    }
-    #notbutton:hover {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        width: 100%;
-        height: auto;
-    }
+
     .dropdown {
         position: relative;
         display: inline-block;
@@ -93,7 +68,12 @@ $_SESSION["error"]="";
         z-index: 1;
     }
 
-    
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
 
     .dropdown-content a:hover {background-color: #f1f1f1}
 
@@ -432,56 +412,36 @@ $_SESSION["error"]="";
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
         <ul class="nav sidebar-nav">
             <li class="sidebar-brand">
-                <a href="list_accounts.php">
-                    <?php 
-                    echo 'Welcome, ';
-                    echo $_SESSION['adminname'] ;
-                    ?>                </a>
+                <a href="#">
+                    adminjr                </a>
             </li>
             <li>
-                <a href="./list_accounts.php">Account</a>
+                <a href="../account/list_accounts.php">Account</a>
             </li>
             <li>
-                <a href="./list_cs.php">Customer Service</a>
+                <a href="../account/list_cs.php">Customer Service</a>
             </li>
             <li>
-                <a href="./cara_bermain.php">Cara Bermain</a>
+                <a href="../account/cara_bermain.php">Cara Bermain</a>
             </li>
             <li>
-                <a href="./meta.php">Meta</a>
+                <a href="../account/meta.php">Meta</a>
             </li>
             <li>
-                <a href="./info_terkini.php">Info Terkini</a>
+                <a href="../account/info_terkini.php">Info Terkini</a>
             </li>
             <li>
-                <a href="./buku_mimpi.php">Buku Mimpi</a>
+                <a href="../account/buku_mimpi.php">Buku Mimpi</a>
             </li>
             <li>
-                <a href="./history_nomor.php">History Nomor</a>
+                <a href="../account/history_nomor.php">History Nomor</a>
             </li>
             <li>
-                <a href="./daftar_banner.php">Banner</a>
+                <a href="../account/daftar_banner.php">Banner</a>
             </li>
             <li>
-                <a href="./logout.php">Log Out</a>
+                <a href="#">Log Out</a>
             </li>
-           <!-- <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li class="dropdown-header">Dropdown heading</li>
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>-->
         </ul>
     </nav>
     <!-- /#sidebar-wrapper -->
@@ -492,11 +452,144 @@ $_SESSION["error"]="";
             <span class="hamb-top"></span>
             <span class="hamb-middle"></span>
             <span class="hamb-bottom"></span>
-        </button>
-    <div class="container">
-        <h2>Daftar Akun Admin
-        </h2>
-        <hr>
+        </button><div class="container">
+    <h2>Edit Customer Service</h2>
+    <hr>
+    <form action="cs_createsetupedit.php" method="post" id="form_meta">
+        <div class="form-group">
+            <label>Brand</label>
+            
+            <select class="form-control" name="sosmedbrand" required>
+               <?php
+               
+                if($_POST['type']=='1'){
+                    echo "
+                    <option value=''>Pilih</option>
+                                <option value='1' selected='selected'>Whatsapp</option>
+                                <option value='2' >BBM</option>
+                                <option value='3' >Line</option>
+                                <option value='4' >Sms</option>
+                                <option value='5' >Telepon</option>
+                                <option value='6' >Yahoo</option>
+                                <option value='7' >Gmail</option>
+                                <option value='8' >Facebook</option>
+                    ";
+                }
+                else if($_POST['type']=='2'){
+                    echo "
+                    <option value=''>Pilih</option>
+                                <option value='1' >Whatsapp</option>
+                                <option value='2' selected='selected'>BBM</option>
+                                <option value='3' >Line</option>
+                                <option value='4' >Sms</option>
+                                <option value='5' >Telepon</option>
+                                <option value='6' >Yahoo</option>
+                                <option value='7' >Gmail</option>
+                                <option value='8' >Facebook</option>
+                    ";
+                }
+                else if($_POST['type']=='3'){
+                    echo "
+                    <option value=''>Pilih</option>
+                                <option value='1' >Whatsapp</option>
+                                <option value='2' >BBM</option>
+                                <option value='3' selected='selected'>Line</option>
+                                <option value='4' >Sms</option>
+                                <option value='5' >Telepon</option>
+                                <option value='6' >Yahoo</option>
+                                <option value='7' >Gmail</option>
+                                <option value='8' >Facebook</option>
+                    ";
+                }
+                else if($_POST['type']=='4'){
+                    echo "
+                    <option value=''>Pilih</option>
+                                <option value='1' >Whatsapp</option>
+                                <option value='2' >BBM</option>
+                                <option value='3' >Line</option>
+                                <option value='4' selected='selected'>Sms</option>
+                                <option value='5' >Telepon</option>
+                                <option value='6' >Yahoo</option>
+                                <option value='7' >Gmail</option>
+                                <option value='8' >Facebook</option>
+                    ";
+                }
+                else if($_POST['type']=='5'){
+                    echo "
+                    <option value=''>Pilih</option>
+                                <option value='1' >Whatsapp</option>
+                                <option value='2' >BBM</option>
+                                <option value='3' >Line</option>
+                                <option value='4' >Sms</option>
+                                <option value='5' selected='selected'>Telepon</option>
+                                <option value='6' >Yahoo</option>
+                                <option value='7' >Gmail</option>
+                                <option value='8' >Facebook</option>
+                    ";
+                }
+                else if($_POST['type']=='6'){
+                    echo "
+                    <option value=''>Pilih</option>
+                                <option value='1' >Whatsapp</option>
+                                <option value='2' >BBM</option>
+                                <option value='3' >Line</option>
+                                <option value='4' >Sms</option>
+                                <option value='5' >Telepon</option>
+                                <option value='6' selected='selected'>Yahoo</option>
+                                <option value='7' >Gmail</option>
+                                <option value='8' >Facebook</option>
+                    ";
+                }
+                else if($_POST['type']=='7'){
+                    echo "
+                    <option value=''>Pilih</option>
+                                <option value='1' >Whatsapp</option>
+                                <option value='2' >BBM</option>
+                                <option value='3' >Line</option>
+                                <option value='4' >Sms</option>
+                                <option value='5' >Telepon</option>
+                                <option value='6' >Yahoo</option>
+                                <option value='7' selected='selected'>Gmail</option>
+                                <option value='8' >Facebook</option>
+                    ";
+                }
+                else{
+                    echo "
+                    <option value=''>Pilih</option>
+                                <option value='1' >Whatsapp</option>
+                                <option value='2' >BBM</option>
+                                <option value='3' >Line</option>
+                                <option value='4' >Sms</option>
+                                <option value='5' >Telepon</option>
+                                <option value='6' >Yahoo</option>
+                                <option value='7' >Gmail</option>
+                                <option value='8' selected='selected'>Facebook</option>
+                    ";
+                }
+                ?>
+                
+                                
+                                
+                                <?php
+                                 //1.whatsapp
+                        //2.bbm
+                        //3.line
+                        //4.sms
+                        //5.telepon
+                        //6. yahoo
+                        //7. gmail
+                        //8. facebook
+                ?>
+                            </select>
+            <div class="form_error"></div>
+        </div>
+        <div class="form-group">
+            <input type='hidden' name='oldtype' value='<?php echo $_POST['type'] ;?>'>
+            <input type='hidden' name='oldcontact' value='<?php echo $_POST['contact'] ;?>'>
+            <label>User Contact</label>
+            <input type="text" class="form-control" name="sosmed" value="<?php echo $_POST['contact'];?>" required>
+            <div class="form_error"></div>
+        </div>
         <?php
         if($_SESSION["error"]==null){
             $_SESSION["error"]="";
@@ -506,79 +599,15 @@ $_SESSION["error"]="";
             $_SESSION["error"]="";
         }
         ?>
-        <div class="left">
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Edit">
         </div>
-        <div class="col-md-12">
-            <a href="../edit_service/register_admin.php" class="btn btn-primary">Buat(+)</a>
-        </div>
-        <div class="col-md-12">
-                    </div>
-        <div id="content-table">
-            <!--<div class="pagination"></div>-->
-            <table class="table">
-                <tr>
-                    <th>No</th>
-                    <th>Username</th>
-                    <th>Status</th>
-                    <th>Online</th>
-                    <th>Action</th>
-                </tr>
-                                   
-                                <?php
-                   
-                    include('db_connect.php');
-                    $user=$_SESSION["adminname"];
-                    $sql = "Select * from `xuser` where username!='".$user."'" ;
-                    $result = mysqli_query($conn,$sql);
-                    $a=1;
-                    while( $row = mysqli_fetch_assoc( $result ) ){
-                        
-            echo "
-            <tr>
-              <td id='1'>$a</td>
-              <td>".$row['username']."</td>";
-                        if($row['Status']==1){
-                            echo "<td>Active</td>";
-                        }
-                        else{
-                            echo "<td>Unactive</td>";
-                        }
-              
-                        if ($row['online']==0){echo "<td style='color:red;'>Offline</td>";}else{echo "<td style='color:green;'>Online</td>";};
-              echo "</td>
-              <td>
-            
-            <div class='dropdown'>
-                                <button class='dropbtn'>Pilih</button>
-                                <div class='dropdown-content'>
-                                    
-                                    <form id='submit1form' action='edit_account.php' method='post'>
-                                        <input type='hidden' name='username' value='".$row['username']."'>
-                                        <input type='hidden' name='status' value='".$row['Status']."'>
-                                        <input type='hidden' name='command' value='clear'>
-                                        <a><button id='notbutton'  type='submit'>Edit</button></a>
-                                        
-                                    </form>
-                                    <form id='submit2form' action='change_password.php' method='post'>
-                                        <input type='hidden' name='username' value='".$row['username']."'>
-                                        <input type='hidden' name='command' value='clear'>
-                                        <a><button id='notbutton' type='submit'>Ganti Password</button></a>
-                                        
-                                    </form>
-                                    <form id='submit3form' action='delete_account.php' method='post'>
-                                        <input type='hidden' name='username' value='".$row['username']."'>
-                                        <input type='hidden' name='command' value='clear'>
-                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Delete</button></a>
-                                        
-                                    </form>
-                                </div>
-                            </div>
-            
-            </td>
-            </tr>";
-                    $a++;
-                    }
-                    ?>
-                            </table>
-        </div>
-    </div>
+    </form>
+</div>
+<style>
+    #form_meta textarea
+    {
+        height:100px;
+    }
+
+</style>

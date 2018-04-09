@@ -404,7 +404,26 @@ $_SESSION["error"]="";
         border: 1px solid #ddd;
         background-color: #4CAF50;
     }
-
+    #notbutton{
+        background: none;
+        border: none;
+    }
+    #notbutton {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    #notbutton:hover {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
 </style>
 
 <body>
@@ -478,36 +497,75 @@ $_SESSION["error"]="";
                     <th>User</th>
                     <th>Action</th>
                 </tr>
-                                    <tr>
-                        <td>1</td>
-                        <td>Whatsapp</td>
-                        <td>085370719799</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_cs.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
+                          <?php
+                   
+                    include('db_connect.php');
+                    $user=$_SESSION["adminname"];
+                    $sql = "Select * from `customerservice`" ;
+                    $result = mysqli_query($conn,$sql);
+                    $a=1;
+                    while( $row = mysqli_fetch_assoc( $result ) ){
+                        
+            echo "
+            <tr>
+              <td id='1'>$a</td>";
+                        //1.whatsapp
+                        //2.bbm
+                        //3.line
+                        //4.sms
+                        //5.telepon
+                        //6. yahoo
+                        //7. gmail
+                        //8. facebook
+                        if($row['type']==1){
+                            echo "<td>Whatsapp</td>";
+                        }
+                        else if($row['type']==2){
+                            echo "<td>BBM</td>";
+                        }
+                        else if($row['type']==3){
+                            echo "<td>Line</td>";
+                        }else if($row['type']==4){
+                            echo "<td>Sms</td>";
+                        }else if($row['type']==5){
+                            echo "<td>Telepon</td>";
+                        }else if($row['type']==6){
+                            echo "<td>Yahoo</td>";
+                        }else if($row['type']==7){
+                            echo "<td>Gmail</td>";
+                        }else if($row['type']==8){
+                            echo "<td>Facebook</td>";
+                        }
+                        
+              echo "<td>".$row['contact']."</td>
+              <td>
+            
+            <div class='dropdown'>
+                                <button class='dropbtn'>Pilih</button>
+                                <div class='dropdown-content'>
+                                    
+                                    <form id='submit1form' action='../edit_service/cs_create_edit.php' method='post'>
+                                        <input type='hidden' name='type' value='".$row['type']."'>
+                                        <input type='hidden' name='contact' value='".$row['contact']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a><button id='notbutton'  type='submit'>Edit</button></a>
+                                        
+                                    </form>
+                                    <form id='submit3form' action='../edit_service/cs_create_delete.php' method='post'>
+                                        <input type='hidden' name='type' value='".$row['type']."'>
+                                        <input type='hidden' name='contact' value='".$row['contact']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Delete</button></a>
+                                        
+                                    </form>
                                 </div>
                             </div>
-                    </ul>
-                        </td>
-                    </tr>
-                                    <tr>
-                        <td>2</td>
-                        <td>Line</td>
-                        <td>1231232</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="#">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
-                                </div>
-                            </div>
-                    </ul>
-                        </td>
-                    </tr>
+            
+            </td>
+            </tr>";
+                    $a++;
+                    }
+                    ?>
                             </table>
         </div>
     </div>

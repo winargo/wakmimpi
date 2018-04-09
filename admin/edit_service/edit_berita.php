@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-    <?php
+<html>
+<?php
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
     session_start();
     include("blockadmin.php");
 $_SESSION["error"]="";
     ?>
-<html>
 <head>
     <title>List User</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -14,10 +14,6 @@ $_SESSION["error"]="";
     <link rel="stylesheet" href="../../css/select2.min.css">
     <script src="../../js/select2.min.js"></script>
     <script src="../../js/jquery-ui-1.9.2.custom.min.js"></script>
-    
-    <script src="../../js/deafult.js" type="text/javascript"></script>
-    
-    
 </head>
 <script>
     $(document).ready(function () {
@@ -59,26 +55,7 @@ $_SESSION["error"]="";
         cursor: pointer;
         border-radius:8px;
     }
-    #notbutton{
-        background: none;
-        border: none;
-    }
-    #notbutton {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        width: 100%;
-        height: auto;
-    }
-    #notbutton:hover {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        width: 100%;
-        height: auto;
-    }
+
     .dropdown {
         position: relative;
         display: inline-block;
@@ -93,7 +70,12 @@ $_SESSION["error"]="";
         z-index: 1;
     }
 
-    
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
 
     .dropdown-content a:hover {background-color: #f1f1f1}
 
@@ -422,7 +404,26 @@ $_SESSION["error"]="";
         border: 1px solid #ddd;
         background-color: #4CAF50;
     }
-
+    #notbutton{
+        background: none;
+        border: none;
+    }
+    #notbutton {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    #notbutton:hover {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
 </style>
 
 <body>
@@ -465,23 +466,6 @@ $_SESSION["error"]="";
             <li>
                 <a href="./logout.php">Log Out</a>
             </li>
-           <!-- <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li class="dropdown-header">Dropdown heading</li>
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>-->
         </ul>
     </nav>
     <!-- /#sidebar-wrapper -->
@@ -494,22 +478,13 @@ $_SESSION["error"]="";
             <span class="hamb-bottom"></span>
         </button>
     <div class="container">
-        <h2>Daftar Akun Admin
+        <h2>Daftar Customer Service
         </h2>
         <hr>
-        <?php
-        if($_SESSION["error"]==null){
-            $_SESSION["error"]="";
-        }
-        if($_SESSION["error"]!=""){
-        echo '<p>'.$_SESSION["error"].'</p>';
-            $_SESSION["error"]="";
-        }
-        ?>
         <div class="left">
         </div>
         <div class="col-md-12">
-            <a href="../edit_service/register_admin.php" class="btn btn-primary">Buat(+)</a>
+            <a href="../edit_service/cs_create.php" class="btn btn-primary">Buat(+)</a>
         </div>
         <div class="col-md-12">
                     </div>
@@ -518,59 +493,93 @@ $_SESSION["error"]="";
             <table class="table">
                 <tr>
                     <th>No</th>
-                    <th>Username</th>
-                    <th>Status</th>
-                    <th>Online</th>
+                    <th>Brand</th>
+                    <th>User</th>
                     <th>Action</th>
                 </tr>
-                                   
-                                <?php
+                          <?php
                    
                     include('db_connect.php');
                     $user=$_SESSION["adminname"];
-                    $sql = "Select * from `xuser` where username!='".$user."'" ;
+                    $sql = "Select * from `customerservice`" ;
                     $result = mysqli_query($conn,$sql);
                     $a=1;
                     while( $row = mysqli_fetch_assoc( $result ) ){
                         
             echo "
             <tr>
-              <td id='1'>$a</td>
-              <td>".$row['username']."</td>";
-                        if($row['Status']==1){
-                            echo "<td>Active</td>";
+              <td id='1'>$a</td>";
+                        //1.whatsapp
+                        //2.bbm
+                        //3.line
+                        //4.sms
+                        //5.telepon
+                        //6. yahoo
+                        //7. gmail
+                        //8. facebook
+                        if($row['type']==1){
+                            echo "<td>Whatsapp</td>";
                         }
-                        else{
-                            echo "<td>Unactive</td>";
+                        else if($row['type']==2){
+                            echo "<td>BBM</td>";
                         }
-              
-                        if ($row['online']==0){echo "<td style='color:red;'>Offline</td>";}else{echo "<td style='color:green;'>Online</td>";};
-              echo "</td>
+                        else if($row['type']==3){
+                            echo "<td>Line</td>";
+                        }else if($row['type']==4){
+                            echo "<td>Sms</td>";
+                        }else if($row['type']==5){
+                            echo "<td>Telepon</td>";
+                        }else if($row['type']==6){
+                            echo "<td>Yahoo</td>";
+                        }else if($row['type']==7){
+                            echo "<td>Gmail</td>";
+                        }else if($row['type']==8){
+                            echo "<td>Facebook</td>";
+                        }
+                        
+              echo "<td>".$row['contact']."</td>
               <td>
             
             <div class='dropdown'>
                                 <button class='dropbtn'>Pilih</button>
                                 <div class='dropdown-content'>
                                     
-                                    <form id='submit1form' action='edit_account.php' method='post'>
-                                        <input type='hidden' name='username' value='".$row['username']."'>
-                                        <input type='hidden' name='status' value='".$row['Status']."'>
+                                    <form id='submit1form' action='../edit_service/cs_create_edit.php' method='post'>
+                                        <input type='hidden' name='type' value='".$row['type']."'>
+                                        <input type='hidden' name='contact' value='".$row['contact']."'>
                                         <input type='hidden' name='command' value='clear'>
                                         <a><button id='notbutton'  type='submit'>Edit</button></a>
                                         
                                     </form>
-                                    <form id='submit2form' action='change_password.php' method='post'>
-                                        <input type='hidden' name='username' value='".$row['username']."'>
-                                        <input type='hidden' name='command' value='clear'>
-                                        <a><button id='notbutton' type='submit'>Ganti Password</button></a>
-                                        
-                                    </form>
-                                    <form id='submit3form' action='delete_account.php' method='post'>
-                                        <input type='hidden' name='username' value='".$row['username']."'>
+                                    <form id='submit3form' action='../edit_service/cs_create_delete.php' method='post'>
+                                        <input type='hidden' name='type' value='".$row['type']."'>
+                                        <input type='hidden' name='contact' value='".$row['contact']."'>
                                         <input type='hidden' name='command' value='clear'>
                                         <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Delete</button></a>
                                         
+                                    </form>";
+                        if($row['aktif']==1){
+                            echo "<form id='submit3form' action='../edit_service/deactivate_berita.php' method='post'>
+                                        <input type='hidden' name='type' value='".$row['type']."'>
+                                        <input type='hidden' name='contact' value='".$row['contact']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Non aktifkan</button></a>
+                                        
+                                    </form>";
+                        }
+                        else{
+                            echo "
+                            <form id='submit3form' action='../edit_service/activate_berita.php' method='post'>
+                                        <input type='hidden' name='type' value='".$row['type']."'>
+                                        <input type='hidden' name='contact' value='".$row['contact']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Aktifkan</button></a>
+                                        
                                     </form>
+                            ";
+                        }
+                        echo "
+                                    
                                 </div>
                             </div>
             
