@@ -424,6 +424,9 @@ $_SESSION["error"]="";
         width: 100%;
         height: auto;
     }
+    #content-table{
+        margin-bottom: 200px;
+    }
 </style>
 
 <body>

@@ -1,13 +1,11 @@
 <!DOCTYPE html>
- <?php
-error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+<html>
+<?php
     session_start();
     include("blockadmin.php");
-$_SESSION["error"]="";
     ?>
-<html>
 <head>
-    <title>List User</title>
+    <title>Wakmimpi</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -46,9 +44,6 @@ $_SESSION["error"]="";
     });
 </script>
 <style>
-    #content-table{
-        margin-bottom: 200px;
-    }
     .dropbtn {
         background-color:  #f0f0f0;
         border:1px solid black;
@@ -417,38 +412,35 @@ $_SESSION["error"]="";
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
         <ul class="nav sidebar-nav">
             <li class="sidebar-brand">
-                <a href="list_accounts.php">
-                    <?php 
-                    echo 'Welcome, ';
-                    echo $_SESSION['adminname'] ;
-                    ?>                </a>
+                <a href="#">
+                    adminjr                </a>
             </li>
             <li>
-                <a href="./list_accounts.php">Account</a>
+                <a href="../account/list_accounts.php">Account</a>
             </li>
             <li>
-                <a href="./list_cs.php">Customer Service</a>
+                <a href="../account/list_cs.php">Customer Service</a>
             </li>
             <li>
-                <a href="./cara_bermain.php">Cara Bermain</a>
+                <a href="../account/cara_bermain.php">Cara Bermain</a>
             </li>
             <li>
-                <a href="./meta.php">Meta</a>
+                <a href="../account/meta.php">Meta</a>
             </li>
             <li>
-                <a href="./info_terkini.php">Info Terkini</a>
+                <a href="../account/info_terkini.php">Info Terkini</a>
             </li>
             <li>
-                <a href="./buku_mimpi.php">Buku Mimpi</a>
+                <a href="../account/buku_mimpi.php">Buku Mimpi</a>
             </li>
             <li>
-                <a href="./history_nomor.php">History Nomor</a>
+                <a href="../account/history_nomor.php">History Nomor</a>
             </li>
             <li>
-                <a href="./daftar_banner.php">Banner</a>
+                <a href="../account/daftar_banner.php">Banner</a>
             </li>
             <li>
-                <a href="./logout.php">Log Out</a>
+                <a href="#">Log Out</a>
             </li>
         </ul>
     </nav>
@@ -460,108 +452,53 @@ $_SESSION["error"]="";
             <span class="hamb-top"></span>
             <span class="hamb-middle"></span>
             <span class="hamb-bottom"></span>
-        </button>
-    <div class="container">
-        <h2>Daftar Buku Mimpi</h2>
-        <hr>
-        <div class="left">
-            <div class="row">
-                <form action="#" method="GET">
-                    <div class="form-group col-md-2">
-                        <select name="jenis_game" class="form-control">
-                            <option value="">Games All</option>
-                            <option value="2d">2D</option>
-                            <option value="3d">3D</option>
-                            <option value="4d">4D</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <input type="text" value="" class="form-control" name="keterangan" placeholder="Keterangan">
-                    </div>
-                    <div class="form-group col-md-2">
-                        <input type="text" value="" class="form-control" name="nomor_game" placeholder="Nomor Game">
-                    </div>
-                    <div class="form-group col-md-2">
-                        <input type="submit" class="btn btn-primary">
-                    </div>
-                </form>
-            </div>
+        </button><script src="/wakmimpi/assets/ckeditor/ckeditor.js"></script>
+<div class="container">
+    <h2>Cara Bermain</h2>
+    <hr>
+    <form action="bermain_edit.php" method="post" id="form_meta">
+        <div class="form-group">
+            <label>Judul</label>
+            <input type="hidden" name='oldtitle' value="<?php echo $_POST['judul']; ?>">
+            <input type="text" class="form-control" name="title" value="<?php 
+                                                                   if($_POST['judul']==null){
+                                                                       header("Location: cara_bermain.php");
+                exit;
+                                                                   }
+                                                                        else{
+                                                                            echo $_POST['judul']; 
+                                                                        }
+                                                                        ?>">
         </div>
-        <div class="col-md-12">
-            <a href="../edit_service/create_bukumimpi.php" class="btn btn-primary">Buat(+)</a>
+        <div class="form-group">
+            <label>Konten</label>
+            <textarea name='oldcontent' hidden><?php echo $_POST['konten']; ?></textarea>
+            <textarea class="form-control" name="content" id="editor1"><?php echo $_POST['konten']; ?>
+            </textarea>
+                <script>
+                    // Replace the <textarea id="editor1"> with a CKEditor
+                    // instance, using default configuration.
+                    CKEDITOR.replace( 'editor1' );
+                </script>
         </div>
-        <div class="col-md-12">
-                    </div>
-        <div id="content-table">
-            <!--<div class="pagination"></div>-->
-            <table class="table">
-                <tr>
-                    <th>No</th>
-                    <th>Jenis Game</th>
-                    <th>Keterangan</th>
-                    <th>Nomor</th>
-                    <th>Action</th>
-                </tr>
-                                    <tr>
-                        <td>1</td>
-                        <td>2d</td>
-                        <td>Kepala Rampok - Singa - Loncat Indah,Lompat - Kayu Manis - Kereta Api - Garu Langit</td>
-                        <td>444</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_bukumimpi.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                                    <tr>
-                        <td>2</td>
-                        <td>2d</td>
-                        <td>Putri Kipas Besi - Ikan Tenggiri - Garis Finish - Apokat,Alpukat - Sarung - Siti Sundari</td>
-                        <td>12</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_bukumimpi.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                                    <tr>
-                        <td>3</td>
-                        <td>2d</td>
-                        <td>Penyair - Tapir - Sempritan - Rembulan - Tanggalan - Kumbakarna</td>
-                        <td>1</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_bukumimpi.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                                    <tr>
-                        <td>4</td>
-                        <td>2d</td>
-                        <td>	Kepala Rampok - Singa - Loncat Indah,Lompat - Kayu Manis - Kereta Api - Garu Langit</td>
-                        <td>3</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_bukumimpi.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                            </table>
+        <?php
+        if($_SESSION["error"]==null){
+            $_SESSION["error"]="";
+        }
+        if($_SESSION["error"]!=""){
+        echo '<p>'.$_SESSION["error"].'</p>';
+            $_SESSION["error"]="";
+        }
+        ?>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Tambah">
         </div>
-    </div>
+    </form>
+</div>
+<style>
+    #form_meta textarea
+    {
+        height:100px;
+    }
+
+</style>

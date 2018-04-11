@@ -1,13 +1,12 @@
 <html>
    <head>
     
-    
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       
-      <link rel="stylesheet" href="css/main-header.css">
-      <link rel="stylesheet" href="css/default.css">    
+      <link rel="stylesheet" href="../css/main-header.css">
+      <link rel="stylesheet" href="../css/default.css">   
 
       
       
@@ -29,21 +28,17 @@
     </script>
    <script src="http://wakmimpi.com/assets/js/jquery.jSlots.min.js" type="text/javascript" charset="utf-8"></script>
   
-  <script src="./js/jquery-1.11.3.js"></script>
-        <script src="./js/jquery.easing.1.3.js"></script>
-        <script src="./js/ezslots.js"></script>
+  <script src="../js/jquery-1.11.3.js"></script>
+        <script src="../js/jquery.easing.1.3.js"></script>
+        <script src="../js/ezslots.js"></script>
         
-        <link href="./css/ezslots.css" rel="stylesheet" type="text/css" />
+        <link href="../css/ezslots.css" rel="stylesheet" type="text/css" />
   
    </head>
     <body>
-        
-    
-        
-       
         <div class="header">
              <div class="header-container">
-              <a href="./index.php"><img class="Logo-format" src="http://waktoto.net/assets/img/hf/logo.png"></a>
+              <a href="../index.php"><img class="Logo-format" src="http://waktoto.net/assets/img/hf/logo.png"></a>
               <div class="initiate-session" method="post">
                   <a href="http://waktoto.net/register.php"><button class="btn btn-primary" id="button-form-control">Daftar</button></a>
                   <a href="http://waktoto.net/"><button class="btn btn-primary" id="button-form-control">LOGIN</button></a>
@@ -51,7 +46,7 @@
               </div>
               </div>
         </div>
-           <div class="Content widthauto">
+           <div class="Content">
            <div class="content-forcer">
              
             </div>
@@ -65,19 +60,19 @@
                     <div class="row">
                         <div class="col-md-3 left-nav">
                             <div class="row" id="nav-sizing">
-                                <a href="./pages/how_to_play.php"><div class="col-md-12 menu">
+                                <a href="./how_to_play.php"><div class="col-md-12 menu">
                                     <h4><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;&nbsp;Cara Bermain</h4>
                                 </div></a>
                                 <a href="http://waktoto.net/hasil_lengkap.php"><div class="col-md-12 menu">
                                     <h4><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;&nbsp;History Nomor</h4>
                                 </div></a>
-                                <a href="./pages/buku_mimpi.php"><div class="col-md-12 menu">
+                                <a href="./buku_mimpi.php"><div class="col-md-12 menu">
                                     <h4><span class="glyphicon glyphicon-menu-hamburger"></span>&nbsp;&nbsp;&nbsp;Buku Mimpi</h4>
                                 </div></a>
-                                <a href="./pages/refferal.php"><div class="col-md-12 menu">
+                                <a href="./refferal.php"><div class="col-md-12 menu">
                                     <h4><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;Refferal</h4>
                                 </div></a>
-                                <a href="./pages/help.php"><div class="col-md-12 menu">
+                                <a href="./help.php"><div class="col-md-12 menu">
                                     <h4><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;&nbsp;Bantuan</h4>
                                 </div></a>
                             <!--    <a href="./pages/lupa_password.php"><div class="col-md-12 menu">
@@ -94,101 +89,15 @@
                                 -->
                             </div>
                         </div>
-                        <div class="col-md-9 content-wrap">
-                        <div class="container caurosel nmargin">
-                        
-                            <div class="container caurosel">
-                              <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                                <!-- Indicators -->
-                                <ol class="carousel-indicators">
-                                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                                  <li data-target="#myCarousel" data-slide-to="2"></li>
-                                </ol>
-
-                                <!-- Wrapper for slides -->
-                                <div class="carousel-inner">
-                                  <div class="item active">
-                                  
-                                    <img src="https://s9.postimg.org/3ty7mxysf/WAKTOGEL-01.png" width="840px" height="482">
-                                  </div>
-
-                                  <div class="item">
-                                    <img src="https://s9.postimg.org/k3yy3esqn/WAKTOGEL-2.png" width="840px" height="482">
-                                  </div>
-
-                                  <div class="item">
-                                    <img src="Images/main_baner.jpg" alt="New york" style="width:100%;">
-                                  </div>
-                                </div>
-
-                                <!-- Left and right controls -->
-                                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                                  <span class="glyphicon glyphicon-chevron-left"></span>
-                                  <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                                  <span class="glyphicon glyphicon-chevron-right"></span>
-                                  <span class="sr-only">Next</span>
-                                </a>
-                              </div>
-                            </div>
-                        
-                        
-                        
-              <!--              <div id="myCarousel" class="carousel slide img-slide" data-ride="carousel">
-                        
-                            <ol class="carousel-indicators">
-                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#myCarousel" data-slide-to="1"></li>
-                                <li data-target="#myCarousel" data-slide-to="2"></li>
-                            </ol>
-
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                <img src="./Images/main_baner.jpg" alt="Los Angeles">
-                                </div>
-                            </div>
-                            
-                            <div class="carousel-inner">
-                                <div class="item">
-                                <img src="./Images/main_baner.jpg" alt="Los Angeles">
-                                </div>
-                            </div>
-                            
-                            <div class="carousel-inner">
-                                <div class="item">
-                                <img src="./Images/main_baner.jpg" alt="Los Angeles">
-                                </div>
-                            </div>
-                            </div>
-                            -->
-                            <div class="row card-sect">
-                                <div class="col-md-3 cards">
-                                    <div class="container">
-                                        <h4>Sydney</h4>
-                                        <h2>11111</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 cards">
-                                    <div class="container">
-                                        <h4>Sydney</h4>
-                                        <h2>11111</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 cards">
-                                    <div class="container">
-                                        <h4>Sydney</h4>
-                                        <h2>11111</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 cards">
-                                    <div class="container">
-                                        <h4>Sydney</h4>
-                                        <h2>11111</h2>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-md-9 content-wrap htp">
+                        <div class="container">
+                            <h3>INFO REFERRAL</h3>
+                            <p></p>
+                            <hr/>
+                            <p></p>
+                            <p>
+                            Bonus Referal Untuk Setiap Member Langsung di Tambahkan kedalam ID GAME anda bonus Referal Didapat 1% dari setiap bettingan Para Pemain Referal/ TurnOver Terima kasih :)
+                            </p>
                         </div>
                         </div>
                     </div>

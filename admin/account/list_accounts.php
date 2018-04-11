@@ -401,6 +401,9 @@ $_SESSION["error"]="";
         background-color: rgba(250,250,250,.8);
         z-index: 1;
     }
+    #content-table{
+        margin-bottom: 200px;
+    }
 
     .form_error
     {

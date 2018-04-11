@@ -69,6 +69,9 @@ $_SESSION["error"]="";
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
     }
+    #content-table{
+        margin-bottom: 200px;
+    }
 
     .dropdown-content a {
         color: black;

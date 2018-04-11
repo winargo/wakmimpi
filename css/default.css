@@ -509,7 +509,6 @@ h4{
 #button-form-control:hover{
     margin-top: 3px;
     margin-left: 10px;
-    width: 16%;
     height: 38px;
     color: black;
     background: red;
@@ -531,7 +530,6 @@ h4{
 #button-dafter-control:hover{
     margin-top: 3px;
     margin-left: 10px;
-    width: 16%;
     height: 38px;
     color: black;
     background: red;
@@ -654,4 +652,164 @@ body a{
 }
 .widthauto{
     height: auto;
+}
+.surroundboxwhatsapp{
+    height: 60px;
+    border-radius: 4px;
+    background-color: greenyellow;
+    text-align: center;
+    vertical-align:middle;
+    font-size: 20pt;
+    margin: 0 auto;
+    padding-top:15px;
+    margin-bottom: 20px; 
+}
+
+.surroundboxline{
+    height: 60px;
+    border-radius: 4px;
+    background-color: limegreen;
+    text-align: center;
+    vertical-align:middle;
+    font-size: 20pt;
+    margin: 0 auto;
+    padding-top:15px;
+    margin-bottom: 20px; 
+}
+
+.surroundboxbbm{
+    height: 60px;
+    border-radius: 4px;
+    background-color: cadetblue;
+    text-align: center;
+    vertical-align:middle;
+    font-size: 20pt;
+    margin: 0 auto;
+    padding-top:15px;
+    margin-bottom: 20px; 
+}
+
+.surroundboxgmail{
+    height: 60px;
+    border-radius: 4px;
+    background-color: red;
+    text-align: center;
+    vertical-align:middle;
+    font-size: 20pt;
+    margin: 0 auto;
+    padding-top:15px;
+    margin-bottom: 20px; 
+}
+.surroundboxyahoo{
+    height: 60px;
+    border-radius: 4px;
+    background-color: darkviolet;
+    text-align: center;
+    vertical-align:middle;
+    font-size: 20pt;
+    margin: 0 auto;
+    padding-top:15px;
+    margin-bottom: 20px; 
+}
+.surroundboxsms{
+    height: 60px;
+    border-radius: 4px;
+    background-color: #ccee00;
+    text-align: center;
+    vertical-align:middle;
+    font-size: 20pt;
+    margin: 0 auto;
+    padding-top:15px;
+    margin-bottom: 20px; 
+}
+.surroundboxphone{
+    height: 60px;
+    border-radius: 4px;
+    background-color: darkgreen;
+    text-align: center;
+    vertical-align:middle;
+    font-size: 20pt;
+    margin: 0 auto;
+    padding-top:15px;
+    margin-bottom: 20px; 
+}
+.surroundboxwhatsapp:hover{
+    height: 60px;
+    border-radius: 4px;
+    background-color: lawngreen;
+    text-align: center;
+    vertical-align:middle;
+    font-size: 20pt;
+    margin: 0 auto;
+    padding-top:15px;
+    margin-bottom: 20px; 
+}
+
+.surroundboxline:hover{
+    height: 60px;
+    border-radius: 4px;
+    background-color: lime;
+    text-align: center;
+    vertical-align:middle;
+    font-size: 20pt;
+    margin: 0 auto;
+    padding-top:15px;
+    margin-bottom: 20px; 
+}
+
+.surroundboxbbm:hover{
+    height: 60px;
+    border-radius: 4px;
+    background-color: skyblue;
+    text-align: center;
+    vertical-align:middle;
+    font-size: 20pt;
+    margin: 0 auto;
+    padding-top:15px;
+    margin-bottom: 20px; 
+}
+
+.surroundboxgmail:hover{
+    height: 60px;
+    border-radius: 4px;
+    background-color: darkred;
+    text-align: center;
+    vertical-align:middle;
+    font-size: 20pt;
+    margin: 0 auto;
+    padding-top:15px;
+    margin-bottom: 20px; 
+}
+.surroundboxyahoo:hover{
+    height: 60px;
+    border-radius: 4px;
+    background-color: blueviolet;
+    text-align: center;
+    vertical-align:middle;
+    font-size: 20pt;
+    margin: 0 auto;
+    padding-top:15px;
+    margin-bottom: 20px; 
+}
+.surroundboxsms:hover{
+    height: 60px;
+    border-radius: 4px;
+    background-color: yellowgreen;
+    text-align: center;
+    vertical-align:middle;
+    font-size: 20pt;
+    margin: 0 auto;
+    padding-top:15px;
+    margin-bottom: 20px; 
+}
+.surroundboxphone:hover{
+    height: 60px;
+    border-radius: 4px;
+    background-color: forestgreen;
+    text-align: center;
+    vertical-align:middle;
+    font-size: 20pt;
+    margin: 0 auto;
+    padding-top:15px;
+    margin-bottom: 20px; 
 }

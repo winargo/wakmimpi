@@ -39,12 +39,12 @@
     <body>
         <div class="header">
              <div class="header-container">
-              <img class="Logo-format" src="http://waktoto.net/assets/img/hf/logo.png">
-              <form class="initiate-session" method="post">
-                  <input class="form-control" id="username-form-control" type="text" placeholder="Username">
-                  <input class="form-control" id="password-form-control" type="password" placeholder="Password">
-                  <button class="btn btn-primary" id="button-form-control" type="submit">LOGIN</button>
-              </form>
+              <a href="../index.php"><img class="Logo-format" src="http://waktoto.net/assets/img/hf/logo.png"></a>
+              <div class="initiate-session" method="post">
+                  <a href="http://waktoto.net/register.php"><button class="btn btn-primary" id="button-form-control">Daftar</button></a>
+                  <a href="http://waktoto.net/"><button class="btn btn-primary" id="button-form-control">LOGIN</button></a>
+                  
+              </div>
               </div>
         </div>
            <div class="Content">
@@ -61,29 +61,27 @@
                     <div class="row">
                         <div class="col-md-3 left-nav">
                             <div class="row" id="nav-sizing">
-                                <a href="../pages/how_to_play.php"><div class="col-md-12 menu">
+                                <a href="./how_to_play.php"><div class="col-md-12 menu">
                                     <h4><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;&nbsp;Cara Bermain</h4>
                                 </div></a>
                                 <a href="http://waktoto.net/hasil_lengkap.php"><div class="col-md-12 menu">
                                     <h4><span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;&nbsp;History Nomor</h4>
                                 </div></a>
-                                <a href="../pages/buku_mimpi.php"><div class="col-md-12 menu">
+                                <a href="./buku_mimpi.php"><div class="col-md-12 menu">
                                     <h4><span class="glyphicon glyphicon-menu-hamburger"></span>&nbsp;&nbsp;&nbsp;Buku Mimpi</h4>
                                 </div></a>
-                                <a href="../pages/refferal.php"><div class="col-md-12 menu">
+                                <a href="./refferal.php"><div class="col-md-12 menu">
                                     <h4><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;Refferal</h4>
                                 </div></a>
-                                <a href="../pages/help.php"><div class="col-md-12 menu">
+                                <a href="./help.php"><div class="col-md-12 menu">
                                     <h4><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;&nbsp;Bantuan</h4>
                                 </div></a>
-                                <a href="../pages/lupa_password.php"><div class="col-md-12 menu">
+                            <!--    <a href="./pages/lupa_password.php"><div class="col-md-12 menu">
                                     <h4><span class="glyphicon glyphicon-calendar"></span>&nbsp;&nbsp;&nbsp;Lupa Password</h4>
-                                </div></a>
-                                <a href="http://waktoto.net/register.php">
-                                    <button class="btn btn-primary daftar">Daftar</button>
-                                </a>
+                                </div></a>-->
+                                
                             </div>
-                            <div class="container afterdaftar">
+                            <div class="container afterdaftar" style="margin-top:50px;">
                                <div id="ezslots1"></div>
                                 <button class="button_random" id="gogogo1">LUCKY NUMBER</button>
                                 

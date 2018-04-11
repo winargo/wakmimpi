@@ -1,16 +1,17 @@
 
+
 <?php
     session_start();
     include("blockadmin.php");
         /* Attempt MySQL server connection. Assuming you are running MySQL
         server with default setting (user 'root' with no password) */
         include('db_connect.php');
-                $sql="delete from `customerservice` where type='".$_POST['type']."' and contact='".$_POST['contact']."'";
+                $sql="update `gameplay` set isactive=1 where judul='".$_POST['judul']."' and steps='".$_POST['konten']."'";
             //else{
                // $sql="delete from `user` where username='".$_POST['username']."'";
             //}
             if(mysqli_query($conn, $sql)){
-                header("Location: ..\account\list_cs.php");
+                header("Location: ..\account\cara_bermain.php");
                 exit;
             }   
             else{

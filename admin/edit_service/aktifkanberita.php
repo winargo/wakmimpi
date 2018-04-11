@@ -5,17 +5,26 @@
         /* Attempt MySQL server connection. Assuming you are running MySQL
         server with default setting (user 'root' with no password) */
         include('db_connect.php');
-                $sql="delete from `customerservice` where type='".$_POST['type']."' and contact='".$_POST['contact']."'";
+                $sql="update `header` set active=0";
+                
             //else{
                // $sql="delete from `user` where username='".$_POST['username']."'";
             //}
             if(mysqli_query($conn, $sql)){
-                header("Location: ..\account\list_cs.php");
-                exit;
+                $sql1="update `header` set active=1 where created='".$_POST['date']."'";
+                 if(mysqli_query($conn, $sql1)){
+                    header("Location: ..\account\info_terkini.php");
+                    exit;
+                }   
+                else{
+                echo "ERROR: Could not able to execute $sql1. " . mysqli_error($link);
+                };
             }   
             else{
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
             };
+
+           
         
         // Close connection
         mysqli_close($link);

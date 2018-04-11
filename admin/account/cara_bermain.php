@@ -404,7 +404,29 @@ $_SESSION["error"]="";
         border: 1px solid #ddd;
         background-color: #4CAF50;
     }
-
+    #notbutton{
+        background: none;
+        border: none;
+    }
+    #notbutton {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    #notbutton:hover {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    #content-table{
+        margin-bottom: 200px;
+    }
 </style>
 
 <body>
@@ -476,40 +498,77 @@ $_SESSION["error"]="";
                     <th>No</th>
                     <th>Judul</th>
                     <th>Konten</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
-                                    <tr>
-                        <td>1</td>
-                        <td>Nomor Keluar</td>
-                        <td><p>nomor pengeluaran adalah berdasar kan 1st prize nomor yang dihasilkan oleh 4D Singapore untuk melihat hasil nomor tersebut bisa dilihat di&nbsp;<a target="_blank" href="http://www.toto.com/">www.toto.com</a>.</p><p>Contoh nomor bola angka yang dihasilkan Singapore toto:&nbsp;<br />Bola 1 = 7&nbsp;<br />Bola 2 = 21&nbsp;<br />Bola 3 = 29&nbsp;<br />Bola 4 = 32&nbsp;<br />Bola 5 = 36&nbsp;<br />Bola 6 = 38&nbsp;<br />Additional Number = 04&nbsp;</p><p>Nomor buka&nbsp;<strong>0885</strong></p><p>Cara perhitungan rumus:</p><ol><li>Bola di urutkan dari yang terkecil sampai yang terbesar.</li><li>Bola ke 1 sampai bola ke 6 dijumlahkan 7+21+29+32+36+38 = 163 di kali 2 = 326</li><li>Hasil dari 326 dikurangkan bola ke 1 ( 7 ) dan bola ke 6 ( 38 ) = 281</li><li>Sisa 281 ditambah additional number (04) = 285</li><li>Dari hasil 285, didapatkan 2 angka puluhan 85 tersebut. Setelah itu dicari angka ratusan dan ribuan nya.</li><li>Untuk mendapat angka ratusan kita mengambil dari bola ke 4 ( 32 ) ditambah bola ke 5 ( 36 ) jumlah = 68 kita ambil ekor 8 ini sebagai angka untuk ratusan</li><li>Untuk mendapat angka ribuan kita mengambil dari bola ke 2 ( 21 ) ditambah bola ke 3 ( 29 ) jumlah = 50 kita ambil ekor 0 ini sebagai angka untuk ribuan</li></ol><p>Maka hasil perhitungan diatas:&nbsp;<br />Ribuan = 0&nbsp;<br />Ratusan = 8&nbsp;<br />Puluhan = 85&nbsp;</p><p>Hasilnya = buka&nbsp;<strong>0885</strong></p><p>Untuk melihat hasil dari perputaran nomor untuk toto Jakarta ini bisa dilihat di website resminya&nbsp;<a target="_blank" href="http://www.toto.com/">www.toto.com</a>.</p><p>Untuk togel jenis 4D Jakarta pengeluaran setiap hari kami mengambil pedoman sebagai nomor pengeluaran adalah berdasar kan 1st prize nomor yang dihasilkan oleh 4D Jakarta untuk melihat hasil nomor tersebut bisa dilihat di&nbsp;<a target="_blank" href="http://www.toto.com/">www.toto.com</a>.</p><p><strong>JENIS</strong>&nbsp;PERMAINAN</p><p>Jenis permainan togel sudah sangat banyak, sudah membaur dan menyesuaikan diri dengan permainan lokal. Alhasil dikenal beberapa karakteristik togel daerah.</p><p>Jenis permainan yang disajikan disini adalah:</p><ol><li>4D, 3D dan 2D</li><li>Colok Bebas</li><li>Colok Bebas 2D</li><li>Colok Jitu</li><li>Colok Naga</li><li>50-50 (Besar-Kecil-Ganjil-Genap)</li><li>Shio</li><li>Kembang Kempis</li><li>Silang Homo</li><li>Tengah Tepi</li><li>Dasar (Besar-Kecil-Ganjil-Genap)</li><li>2 Kombinasi</li></ol><p>Struktur nomor keluar (misalnya : A B C D), berarti:&nbsp;<br />A = AS&nbsp;<br />B = KOP&nbsp;<br />C = KEPALA&nbsp;<br />D = EKOR</p></td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_carabermain.php">Edit</a>
-                                    <a href="">View</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')" href="#">Delete</a>
+                                       <?php
+                   
+                    include('db_connect.php');
+                    $user=$_SESSION["adminname"];
+                    $sql = "Select * from `gameplay`" ;
+                    $result = mysqli_query($conn,$sql);
+                    $a=1;
+                    while( $row = mysqli_fetch_assoc( $result ) ){
+                        
+            echo "
+            <tr>
+              <td id='1'>$a</td>
+              <td>".$row['judul']."</td>
+              <td><pre>".$row['steps']."</pre></td>
+              ";
+                        if($row['isactive']==1){
+                            echo "<td><b style='color:green ;'>Active</b></td>";
+                        }
+                        else{
+                            echo "<td><b style='color:red ;'>Disabled</b></td>";
+                        }
+              echo "</td>
+              <td>
+            
+            <div class='dropdown'>
+                                <button class='dropbtn'>Pilih</button>
+                                <div class='dropdown-content'>
+                                    
+                                    <form id='submit1form' action='edit_gameplay.php' method='post'>
+                                        <input type='hidden' name='judul' value='".$row['judul']."'>
+                                        <input type='hidden' name='konten' value='".$row['steps']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a><button id='notbutton'  type='submit'>Edit</button></a>
+                                        
+                                    </form>";
+                                   if($row['isactive']==1){
+                            echo "<form id='submit3form' action='nonaktifkangameplay.php' method='post'>
+                                         <input type='hidden' name='judul' value='".$row['judul']."'>
+                                        <input type='hidden' name='konten' value='".$row['steps']."'>
+                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >non Aktifkan</button></a>
+                                        
+                                    </form>";
+                        }
+                        else{
+                            echo " <form id='submit3form' action='aktifkangameplay.php' method='post'>
+                                         <input type='hidden' name='judul' value='".$row['judul']."'>
+                                        <input type='hidden' name='konten' value='".$row['steps']."'>
+                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Aktifkan</button></a>
+                                        
+                                    </form>";
+                        }
+                                        echo "
+                                    </form>
+                                    <form id='submit3form' action='delete_gameplay.php' method='post'>
+                                        <input type='hidden' name='judul' value='".$row['judul']."'>
+                                        <input type='hidden' name='konten' value='".$row['steps']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Delete</button></a>
+                                        
+                                    </form>
                                 </div>
                             </div>
-                    </ul>
-                        </td>
-                    </tr>
-                                    <tr>
-                        <td>2</td>
-                        <td>qwe</td>
-                        <td><p>qwe</p></td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="#">Edit</a>
-                                    <a href="">View</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')" href="#">Delete</a>
-                                </div>
-                            </div>
-                    </ul>
-                        </td>
-                    </tr>
+            
+            </td>
+            </tr>";
+                    $a++;
+                    }
+                    ?>
                             </table>
         </div>
     </div>

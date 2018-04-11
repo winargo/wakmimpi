@@ -46,6 +46,9 @@ $_SESSION["error"]="";
     });
 </script>
 <style>
+    #content-table{
+        margin-bottom: 200px;
+    }
     .dropbtn {
         background-color:  #f0f0f0;
         border:1px solid black;

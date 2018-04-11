@@ -91,6 +91,9 @@ $_SESSION["error"]="";
         position: relative;
         overflow-x: hidden;
     }
+    #content-table{
+        margin-bottom: 200px;
+    }
     body,
     html { height: 100%;}
     .nav .open > a,

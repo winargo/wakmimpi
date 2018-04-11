@@ -5,12 +5,12 @@
         /* Attempt MySQL server connection. Assuming you are running MySQL
         server with default setting (user 'root' with no password) */
         include('db_connect.php');
-                $sql="delete from `customerservice` where type='".$_POST['type']."' and contact='".$_POST['contact']."'";
+                $sql="update `header` set isi_berita='".$_POST['breaking_news']."',created=now() where isi_berita='".$_POST['data']."' and created='".$_POST['date']."'";
             //else{
                // $sql="delete from `user` where username='".$_POST['username']."'";
             //}
             if(mysqli_query($conn, $sql)){
-                header("Location: ..\account\list_cs.php");
+                header("Location: ..\account\info_terkini.php");
                 exit;
             }   
             else{
@@ -34,3 +34,5 @@
               <td>{$row\['employee_sal'\]}</td> 
             </tr>\n";
           }-->
+    </body>
+</html>

@@ -456,7 +456,7 @@
 <div class="container">
     <h2>Cara Bermain</h2>
     <hr>
-    <form action="" method="post" id="form_meta">
+    <form action="bermain_add.php" method="post" id="form_meta">
         <div class="form-group">
             <label>Judul</label>
             <input type="text" class="form-control" name="title" value="">
@@ -470,8 +470,17 @@
                     CKEDITOR.replace( 'editor1' );
                 </script>
         </div>
+        <?php
+        if($_SESSION["error"]==null){
+            $_SESSION["error"]="";
+        }
+        if($_SESSION["error"]!=""){
+        echo '<p>'.$_SESSION["error"].'</p>';
+            $_SESSION["error"]="";
+        }
+        ?>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary">
+            <input type="submit" class="btn btn-primary" value="Tambah">
         </div>
     </form>
 </div>

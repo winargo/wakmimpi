@@ -4,7 +4,8 @@
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
     session_start();
     include("blockadmin.php");
-$_SESSION["error"]="";
+    $_SESSION["error"]="";
+    
     ?>
 <head>
     <title>Wakmimpi</title>
@@ -404,7 +405,9 @@ $_SESSION["error"]="";
         border: 1px solid #ddd;
         background-color: #4CAF50;
     }
-
+#content-table{
+        margin-bottom: 200px;
+    }
     #notbutton{
         background: none;
         border: none;
@@ -481,13 +484,35 @@ $_SESSION["error"]="";
     <div class="container">
         <h2>Info Terkini</h2>
         <hr>
-        <form action="tambah_berita.php" method="post">
-            <div class="form-group">
-                <input type="text" name="breaking_news" class="form-control" value="" placeholder="Tambahkan disini untuk menambahkan berita terkini">
-                <span class="form_error"></span>
+        <?php
+        $datecreate=isset($_POST['date']) ? $_POST['date'] : '';
+    
+        if($datecreate!=""){
+            echo "<form action='edit_berita.php' method='post'>
+            <div class='form-group'>
+                <input type='text' name='breaking_news' class='form-control' value='";
+            echo $_POST['data'];
+            echo "' placeholder='Tambahkan disini untuk menambahkan berita terkini'>
+                <span class='form_error'></span>
             </div>
-            <input type="submit" class="btn btn-primary">
-        </form>
+            <input style='margin-bottom: 40px;' type='submit' class='btn btn-primary' value='Edit'>
+            <input type='hidden' name='date' value='".$_POST['date']."'>
+            <input type='hidden' name='data' value='".$_POST['data']."'>
+        </form>";
+        }
+        else{
+            echo "<form action='tambah_berita.php' method='post'>
+            <div class='form-group'>
+                <input type='text' name='breaking_news' class='form-control' value='' placeholder='Tambahkan disini untuk menambahkan berita terkini'>
+                <span class='form_error'></span>
+            </div>
+            <input style='margin-bottom: 40px;' type='submit' class='btn btn-primary' value='Tambah'>
+            
+        </form>";
+        }
+        ?>
+        <p style="margin-bottom:20px;">NB : Hanya ada 1 berita yang boleh aktif,mengaktifkan berita baru akan menonaktifkan sebelumnya
+        </p>
 
         <div id="content-table">
             <!--<div class="pagination"></div>-->
@@ -496,6 +521,7 @@ $_SESSION["error"]="";
                     <th>No</th>
                     <th>Breaking News</th>
                     <th>Tanggal dibuat</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
                          <?php
@@ -520,24 +546,32 @@ $_SESSION["error"]="";
                         //8. facebook
                             echo "<td>".$row['isi_berita']."</td>";
                         
-              echo "<td>".$row['created']."</td>
+              echo "<td>".$row['created']."</td>";
+                        if($row['active']==1){
+                            echo "<td>Active</td>";
+                        }
+                        else{
+                            echo "<td>Not Active</td>";
+                        }
+                        echo "
               <td>
             
             <div class='dropdown'>
                                 <button class='dropbtn'>Pilih</button>
                                 <div class='dropdown-content'>
-                                    <form id='submit1form' action='../edit_service/' method='post'>
+                                    <form id='submit1form' action='info_terkini.php' method='post'>
                                         <input type='hidden' name='date' value='".$row['created']."'>
+                                        <input type='hidden' name='data' value='".$row['isi_berita']."'>
                                         <input type='hidden' name='command' value='clear'>
                                         <a><button id='notbutton'  type='submit'>Edit</button></a>
                                         
                                     </form>
                                     ";
-                        if($row['aktif']==1){
-                            echo "<form id='submit3form' action='../edit_service/aktifkanberita.php' method='post'>
+                        if($row['active']==1){
+                            echo "<form id='submit3form' action='../edit_service/nonaktifkanberita.php' method='post'>
                                         <input type='hidden' name='date' value='".$row['created']."'>
                                         <input type='hidden' name='command' value='clear'>
-                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Aktifkan</button></a>
+                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >non Aktifkan</button></a>
                                         
                                     </form>
                                     <form id='submit3form' action='../edit_service/deleteberita.php' method='post'>
@@ -548,10 +582,10 @@ $_SESSION["error"]="";
                                     </form>";
                         }
                         else{
-                            echo " <form id='submit3form' action='../edit_service/nonaktifkanberita.php' method='post'>
+                            echo " <form id='submit3form' action='../edit_service/aktifkanberita.php' method='post'>
                                         <input type='hidden' name='date' value='".$row['created']."'>
                                         <input type='hidden' name='command' value='clear'>
-                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Non Aktifkan</button></a>
+                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Aktifkan</button></a>
                                         
                                     </form>
                                     <form id='submit3form' action='../edit_service/deleteberita.php' method='post'>
