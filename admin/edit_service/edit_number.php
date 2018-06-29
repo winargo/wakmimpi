@@ -3,7 +3,39 @@
 <?php
     session_start();
     include("blockadmin.php");
-    ?>
+            
+        $number=isset($_POST['number_out']) ? $_POST['number_out'] : '';
+        if($number==''){
+        }else{
+            include('db_connect.php');
+                $sql="";
+                $sql = "SELECT * FROM `togel` where type='".$_POST['pool_type']."' and result='".$_POST['number_out']."' " ;
+                $result = mysqli_query($conn,$sql);
+            if (!$result) {
+                printf("Error: %s\n", mysqli_error($conn));
+                exit();
+            }
+            else{
+            $row=mysqli_fetch_array($result);
+            if($row['result']==$_POST['number_out']){
+                $_SESSION["error"]="<b style='color: red;'>Nomor Untuk ".$_POST['pool_type']." Sudah diregistrasi </b>";
+                    header("Location: create_number.php");
+                    exit;
+            }else{
+                $sql="insert into `togel` (no,type,fulldate,result,username) values(0,'".$_POST['pool_type']."',now(),'".$_POST['number_out']."','".$_SESSION['adminname']."')";
+                if(mysqli_query($conn, $sql)){
+                    header("Location: ..\account\history_nomor.php");
+                    exit;
+                }   
+                else{
+                echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                };
+            }
+        // Close connection
+        mysqli_close($link);
+        }
+        }
+        ?>
 <head>
     <title>Wakmimpi</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -402,6 +434,30 @@
         border: 1px solid #ddd;
         background-color: #4CAF50;
     }
+    #notbutton{
+        background: none;
+        border: none;
+    }
+    #notbutton {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    #notbutton:hover {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+     #form_meta textarea
+    {
+        height:100px;
+    }
 
 </style>
 
@@ -412,8 +468,11 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
         <ul class="nav sidebar-nav">
             <li class="sidebar-brand">
-                <a href="#">
-                    adminjr                </a>
+                <a href="list_accounts.php">
+                    <?php 
+                    echo 'Welcome, ';
+                    echo $_SESSION['adminname'] ;
+                    ?>                </a>
             </li>
             <li>
                 <a href="../account/list_accounts.php">Account</a>
@@ -422,7 +481,7 @@
                 <a href="../account/list_cs.php">Customer Service</a>
             </li>
             <li>
-                <a href="../account/cara_bermain.php">Cara Bermain</a>
+                <a href="../account/list_cs.php">Cara Bermain</a>
             </li>
             <li>
                 <a href="../account/meta.php">Meta</a>
@@ -440,7 +499,7 @@
                 <a href="../account/daftar_banner.php">Banner</a>
             </li>
             <li>
-                <a href="#">Log Out</a>
+                <a href="../account/logout.php">Log Out</a>
             </li>
         </ul>
     </nav>
@@ -455,35 +514,106 @@
         </button><div class="container">
     <h2>Nomor</h2>
     <hr>
-        <form action="" method="post" id="form_meta">
-                            <!--<strong>Periode : </strong><br>-->
-                <strong>Friday , 2018-01-05 </strong>
+        <form action="edit_numberexec.php " method="post" id="form_meta">
+                            <!--
+                <strong>Periode : </strong><br>-->
+                <strong><?php
+                    echo $_POST['daypass']." , ".$_POST['datepass'];
+                    ?> </strong>
                         <br><br>
 
             <div class="form-group">
+                
                 <label>Tipe Pool</label>
-                <select class="form-control" name="pool_type" required>
-                    <option value="">Pilih</option>
-                                            <option value="1" >SYDNEY POOL</option>
-                                            <option value="2" >HONGKONG POOL</option>
-                                            <option value="3"  selected="selected">SINGAPORE POOL</option>
-                                            <option value="4" >JAKARTA POOL</option>
-                                            <option value="18" >MACAU POOL</option>
+                <?php
+                    if($_POST['type']=='SYDNEY POOL'){
+                        echo "
+                            <select class='form-control' name='pool_type' required>
+                    <option value=''>Pilih</option>
+                                            <option value='SYDNEY POOL' selected='selected'>SYDNEY POOL</option>
+                                            <option value='HONGKONG POOL' >HONGKONG POOL</option>
+                                            <option value='SINGAPORE POOL' >SINGAPORE POOL</option>
+                                            <option value='JAKARTA POOL' >JAKARTA POOL</option>
+                                            <option value='MACAU POOL' >MACAU POOL</option>
                                     </select>
+                        ";
+                    }
+                else if($_POST['type']=='HONGKONG POOL'){
+                    echo "
+                            <select class='form-control' name='pool_type' required>
+                                    <option value=''>Pilih</option>
+                                            <option value='SYDNEY POOL' >SYDNEY POOL</option>
+                                            <option value='HONGKONG POOL' selected='selected'>HONGKONG POOL</option>
+                                            <option value='SINGAPORE POOL' >SINGAPORE POOL</option>
+                                            <option value='JAKARTA POOL' >JAKARTA POOL</option>
+                                            <option value='MACAU POOL' >MACAU POOL</option>
+                                    </select>
+                        ";
+                }else if($_POST['type']=='SINGAPORE POOL'){
+                    echo "
+                            <select class='form-control' name='pool_type' required>
+                                    <option value=''>Pilih</option>
+                                            <option value='SYDNEY POOL' >SYDNEY POOL</option>
+                                            <option value='HONGKONG POOL' >HONGKONG POOL</option>
+                                            <option value='SINGAPORE POOL' selected='selected'>SINGAPORE POOL</option>
+                                            <option value='JAKARTA POOL' >JAKARTA POOL</option>
+                                            <option value='MACAU POOL' >MACAU POOL</option>
+                                    </select>
+                        ";
+                }
+                else if($_POST['type']=='JAKARTA POOL'){
+                    echo "
+                            <select class='form-control' name='pool_type' required>
+                                    <option value=''>Pilih</option>
+                                            <option value='SYDNEY POOL' >SYDNEY POOL</option>
+                                            <option value='HONGKONG POOL' >HONGKONG POOL</option>
+                                            <option value='SINGAPORE POOL' >SINGAPORE POOL</option>
+                                            <option value='JAKARTA POOL' selected='selected'>JAKARTA POOL</option>
+                                            <option value='MACAU POOL' >MACAU POOL</option>
+                                    </select>
+                        ";
+                }
+                else if($_POST['type']=='MACAU POOL'){
+                    echo "
+                            <select class='form-control' name='pool_type' required>
+                                    <option value=''>Pilih</option>
+                                            <option value='SYDNEY POOL' >SYDNEY POOL</option>
+                                            <option value='HONGKONG POOL' >HONGKONG POOL</option>
+                                            <option value='SINGAPORE POOL' >SINGAPORE POOL</option>
+                                            <option value='JAKARTA POOL' >JAKARTA POOL</option>
+                                            <option value='MACAU POOL' selected='selected'>MACAU POOL</option>
+                                    </select>
+                        ";
+                }
+                ?>
             </div>
             <div class="form-group">
+               <?php
+                    echo "
+                        <input class='form-control' name='poolold' type='hidden' value='".$_POST['type']."'>
+                        <input class='form-control' name='numberold' type='hidden' value='".$_POST['nomor']."'>
+                    ";
+                ?>
                 <label>Nomor</label>
-                <input class="form-control" name="number_out" type="text" value="1568">
+                <input class="form-control" name="number_out" type="text" value=" <?php echo $_POST['nomor'];?>" required>
             </div>
+            <?php
+            if($_SESSION["error"]==null){
+            $_SESSION["error"]="";
+            }
+            if($_SESSION["error"]!=""){
+            echo '<p>'.$_SESSION["error"].'</p>';
+            $_SESSION["error"]="";
+            }
+            ?>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary">
+                <input type="submit" class="btn btn-primary" value="Create">
             </div>
-        </form>
-</div>
-<style>
-    #form_meta textarea
-    {
-        height:100px;
-    }
-
-</style>
+            </form>
+            
+            
+        </div>
+    </div>
+    </div>
+</body>
+</html>

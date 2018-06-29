@@ -1,6 +1,107 @@
 <!DOCTYPE html>
+<?php
+
+function console_log( $data ){
+  echo '<script>';
+  echo 'console.log('. json_encode( $data ) .')';
+  echo '</script>';
+}
+error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+session_start();
+    include("blockadmin.php");
+include('db_connect.php');
+$data=isset($_POST['command']) ? $_POST['command'] : '';
+$number=0;
+if($data!=''){
+    
+    $sql = "select count(*)+1 as number from `carousel`";
+    $result = mysqli_query($conn,$sql);
+        if (!$result) {
+            printf("Error: %s\n", mysqli_error($conn));
+            exit();
+        }
+        else{
+            $row=mysqli_fetch_array($result);
+                $number=$row['number'];
+                console_log( $number );
+        }
+    
+$reportid="ER".(rand(00000000,99999999));
+    console_log( $reportid );
+$target_dir = "../uploads/";
+    $real_dir = "./admin/uploads/";
+    $admin_dir="";
+    console_log( $target_dir );
+$target_file = $target_dir . basename($reportid.$_FILES["fileToUpload"]["name"]);
+        console_log( $target_file );
+$uploadOk = 1;
+    console_log( $uploadOk );
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    console_log( $imageFileType );
+    console_log( $_POST["submit"]);
+    
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+    console_log( "working" );
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false) {
+        $_SESSION['error']="File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        $_SESSION['error']="File is not an image.";
+        $uploadOk = 0;
+    }
+}
+// Check if file already exists
+if (file_exists($target_file)) {
+    $_SESSION['error']="Sorry, file already exists.";
+    $uploadOk = 0;
+}
+// Check file size
+if ($_FILES["fileToUpload"]["size"] > 5000000) {
+    $_SESSION['error']="Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+    $_SESSION['error']="Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+    console_log( $uploadOk );
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    $_SESSION['error']="Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file) && $number!=0) {
+        $dir= basename( $reportid.$_FILES["fileToUpload"]["name"]);
+         $_SESSION['error']=basename( $_FILES["fileToUpload"]["name"]);
+        $temp=$real_dir.$dir;
+        $admin_dir= $target_file;
+        $_SESSION['error']="The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+            $sql = "INSERT INTO `carousel` (order_number,image_dir,admin_dir,direct,username) VALUES(".$number.",'".$temp."','".$admin_dir."','".$_POST['direct']."','".$_SESSION['adminname']."')";
+        console_log( $_POST['direct'] );
+            if(mysqli_query($conn, $sql)){
+                header("Location: ../account/daftar_banner.php");
+                exit;
+            }   
+            else{
+            $_SESSION['error']="ERROR: Could not able to execute $sql. " . mysqli_error($link);
+            };
+        
+        // Close connection
+        mysqli_close($link);
+    } else {
+        $_SESSION['error']="Sorry, there was an error uploading your file.";
+    }
+}
+}else{
+    
+}
+?>
 <html>
-<head>
+    <head>
     <title>Wakmimpi</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -408,8 +509,11 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
         <ul class="nav sidebar-nav">
             <li class="sidebar-brand">
-                <a href="#">
-                    adminjr                </a>
+                <a href="list_accounts.php">
+                    <?php 
+                    echo 'Welcome, ';
+                    echo $_SESSION['adminname'] ;
+                    ?>                </a>
             </li>
             <li>
                 <a href="../account/list_accounts.php">Account</a>
@@ -436,7 +540,7 @@
                 <a href="../account/daftar_banner.php">Banner</a>
             </li>
             <li>
-                <a href="#">Log Out</a>
+                <a href="../account/logout.php">Log Out</a>
             </li>
         </ul>
     </nav>
@@ -450,14 +554,33 @@
             <span class="hamb-bottom"></span>
         </button><link href='http://fonts.googleapis.com/css?family=Roboto+Condensed|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+       function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imageemergency')
+                    .attr('src', e.target.result).width(300)
+                        .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+       </script>
 <div class="container">
     <h2>Create Banner</h2>
     <hr>
-    <form action="" method="post" id="uploadimage" enctype="multipart/form-data">
+    <form action="create_banner.php" method="post" id="uploadimage" enctype="multipart/form-data">
                 <div id="selectImage">
+                
+            <img src="../../Images/noimage.jpg" id="imageemergency" width="300px" height="200px">
+            <br>
+            <br>
             <label>Select Your Image</label><br/>
-
-            <input type="file" name="fileToUpload" id="fileToUpload"><br>
+            <input type="hidden" value="aaaaa" name="command"> 
+            <input type="file" name="fileToUpload" id="fileToUpload"  onchange="readURL(this);" required><br>
             <!--<input type="file" id="file" name="file" required />
             <input type="hidden" id="banner_image" name="banner_image" required />
             <input type="submit" value="Upload" class="submit btn btn-success" />-->
@@ -465,29 +588,19 @@
         </div>
         <!--<h4 id='loading' >loading..</h4>
         <div id="message"></div>-->
-        <!--<div class="form-group">
-            <label for="username">Upload</label>
-            <input type="file" name="banner_image" class="form-control" value="">
-            <span class="form_error"></span>
-        </div>-->
-
         <div class="form-group">
-            <label for="banner_link">Link Banner</label>
-            <input type="text" name="banner_link" class="form-control" value="">
-            <span class="form_error"></span>
+            <label for="username">Link redirect</label>
+            <input type="text" name="direct" class="form-control" value="" required>
         </div>
-
-        <div class="form-group">
-            <label for="position">Position</label>
-            <select name="position" class="form-control">
-                <option value="">Pilih</option>
-                                    <option value="HEADER"  >HEADER</option>
-                                    <option value="SIDE1"  >SIDE1</option>
-                                    <option value="CONTENT"  >CONTENT</option>
-                                    <option value="SIDE2"  >SIDE2</option>
-                            </select>
-            <span class="form_error"></span>
-        </div>
-        <input type="submit" id="save" class="btn btn-primary" value="Daftar" tabindex="11">
+    <?php
+        if($_SESSION["error"]==null){
+            $_SESSION["error"]="";
+        }
+        if($_SESSION["error"]!=""){
+        echo '<p>'.$_SESSION["error"].'</p>';
+            $_SESSION["error"]="";
+        }
+        ?>
+        <input name="submit" type="submit" id="save" class="btn btn-primary" value="Daftar" tabindex="11">
     </form>
 </div>

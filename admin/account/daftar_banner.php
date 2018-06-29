@@ -407,7 +407,26 @@ $_SESSION["error"]="";
         border: 1px solid #ddd;
         background-color: #4CAF50;
     }
-
+    #notbutton{
+        background: none;
+        border: none;
+    }
+    #notbutton {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    #notbutton:hover {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
 </style>
 
 <body>
@@ -462,7 +481,7 @@ $_SESSION["error"]="";
             <span class="hamb-bottom"></span>
         </button>
     <div class="container">
-        <h2>Daftar Banner</h2>
+        <h2>Daftar Banner &amp; caurosel</h2>
         <hr>
         <div class="left">
         </div>
@@ -477,74 +496,42 @@ $_SESSION["error"]="";
                 <tr>
                     <th>No</th>
                     <th>Banner</th>
-                    <th>Position</th>
                     <th>Link</th>
                     <th>Action</th>
                 </tr>
-                                    <tr>
-                        <td>1</td>
-                        <td><img style="width:70px;height:70px;" src="../../Images/banner2.jpg"></td>
-                        <td>SIDE1</td>
-                        <td>www.waktogel.com</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_banner.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
+                                            <?php
+                    include('db_connect.php');
+                    $user=$_SESSION["adminname"];
+                    $sql = "Select * from `carousel` order by order_number asc" ;
+                    $result = mysqli_query($conn,$sql);
+                    $a=1;
+                    while( $row = mysqli_fetch_assoc( $result ) ){
+                        
+            echo "
+                <tr>
+                <td id='1'>".$row['order_number']."</td>
+                <td><img style='width:70px;height:70px;' src='".$row['admin_dir']."'></td>";
+                echo "<td><a href='".$row[direct]."'>".$row[direct]."</a></td>";
+                echo "<td>
+            
+            <div class='dropdown'>
+                                <button class='dropbtn'>Pilih</button>
+                                <div class='dropdown-content'>
+                                    <form id='submit3form' action='../edit_service/delete_banner.php' method='post'>
+                                        <input type='hidden' name='no' value='".$row['order_number']."'>
+                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Delete</button></a>
+                                        
+                                    </form>
                                 </div>
                             </div>
-                            </ul>
-                        </td>
-                    </tr>
-                                    <tr>
-                        <td>2</td>
-                        <td><img style="width:70px;height:70px;" src="../../Images/banner.jpg"></td>
-                        <td>SIDE2</td>
-                        <td>www.waktogel.com</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_banner.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
-                                </div>
-                            </div>
-                            </ul>
-                        </td>
-                    </tr>
-                                    <tr>
-                        <td>3</td>
-                        <td><img style="width:70px;height:70px;" src="#"></td>
-                        <td>CONTENT</td>
-                        <td>www.waktogel.com</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_banner.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
-                                </div>
-                            </div>
-                            </ul>
-                        </td>
-                    </tr>
-                                    <tr>
-                        <td>4</td>
-                        <td><img style="width:70px;height:70px;" src="../../Images/main_baner.jpg"></td>
-                        <td>HEADER</td>
-                        <td>www.waktogel.com</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_banner.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
-                                </div>
-                            </div>
-                            </ul>
-                        </td>
-                    </tr>
+            
+            </td>
+            </tr>";
+                    $a++;
+                    }
+                $command='';
+                $isfirst='';
+                    ?>        
                             </table>
         </div>
     </div>

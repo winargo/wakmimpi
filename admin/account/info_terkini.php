@@ -548,10 +548,10 @@ error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
                         
               echo "<td>".$row['created']."</td>";
                         if($row['active']==1){
-                            echo "<td>Active</td>";
+                            echo "<td><b style='color:green;'>Active</b></td>";
                         }
                         else{
-                            echo "<td>Not Active</td>";
+                            echo "<td><b style='color:red;'>Not Active</b></td>";
                         }
                         echo "
               <td>

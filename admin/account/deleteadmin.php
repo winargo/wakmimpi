@@ -1,5 +1,6 @@
 <?php
     session_start();
+include("blockadmin.php");
 ?>
        <?php
         /* Attempt MySQL server connection. Assuming you are running MySQL

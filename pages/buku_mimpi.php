@@ -34,7 +34,57 @@
         <script src="../js/ezslots.js"></script>
         
         <link href="../css/ezslots.css" rel="stylesheet" type="text/css" />
-  
+  <style>
+      .trresize{
+      }
+      td{
+          color: black;
+      }
+      .keterangans{
+          width: 40%;
+      }
+      .col-md-2{
+          width: 20%;
+      }
+      .hasil{
+           width: 95%;
+           height: 350px;
+           margin:  0 auto;
+           margin-top: 5%;
+           border-radius: 5px;
+           background-color: darkred;
+           padding: 8px;
+           padding-top: 15px;
+       }
+       .numbertheme{
+           overflow:hidden;
+           overflow-y:scroll;
+           height: 200px;
+           padding-left: 0;
+       }
+       .itemli, .itemliright{
+           float: left;
+           
+       }
+       .itemliright{
+           float: right;
+       }
+       .lili{
+           background-color: black;
+           opacity: 70%;
+           border-radius: 3px;
+           width: 100%;
+           padding: 8px;
+           height: 36px;
+           margin-bottom: 5px;
+       }
+       .itemli{
+           margin: 0 auto;
+       }
+       .libackground{
+           background-color: black;
+       }
+       </style>
    </head>
     <body>
         <div class="header">
@@ -53,7 +103,20 @@
             </div>
             <div class="header-info">
                     <p class="text-info"><span class="glyphicon glyphicon-bullhorn"></span>  Info Terkini :</p>
-                     <marquee class="text-marquee">Selamat datang di WAKmimpi. Kini telah hadir game terbaru kami, GAME SUWIT tradisional, Jadikanlah anda sebagai pemenang, mudah bukan? tunggu apalagi, gabung & raih kemenangan anda sekarang juga.
+                     <marquee class="text-marquee"><?php
+                         include('db_connect.php');
+                         $sql = "Select * from `header` where active=1" ;
+                         $result = mysqli_query($conn,$sql);
+                         if (!$result) {
+                            printf("Error: %s\n", mysqli_error($conn));
+                            exit();
+                         }
+                         else
+                         {
+                         $row=mysqli_fetch_array($result);
+                         echo $row['isi_berita'];
+                         }
+                         ?>
                 </marquee>
                 </div>
             <div class="jumbotron cont">
@@ -89,64 +152,150 @@
                                 tambah gitu disini
                                 -->
                             </div>
+                            
+                            <div class="hasil">
+                                    <p>&nbsp;&nbsp;<i class="far fa-calendar-alt"></i><b>&nbsp;&nbsp;Hasil Terakhir</b></p>
+                                    <hr>
+                                    <p>&nbsp;&nbsp;<?php
+                                        echo date("d F Y");
+                                        ?></p>
+                                    <ul class="numbertheme" style="list-style-type: none;">
+                                           <?php
+                        $time = strtotime(date("d F Y"));
+                        $tanggalbiasa = date("Y-m-d h:i:s", $time);
+                    include('db_connect.php');
+                    $sql = "Select * from `togel` where fulldate='".$tanggalbiasa."' order by fulldate asc" ;
+                    $result = mysqli_query($conn,$sql);
+                    $a=1;
+                    while( $row = mysqli_fetch_assoc( $result ) ){
+                            echo "<li class='lili'><div class='libackground'><div class='itemli'>".$row['type']."</div><div class='itemliright'>".$row['result']."</div></div></li>
+                                ";
+                    $a++;
+                    }
+                    ?>
+                                    </ul>
+                                </div>
                         </div>
                         <div class="col-md-9 content-wrap htp">
                         <div class="col-md-12 bm-content">
             <h2 class="title-content">Buku Mimpi</h2>
             <hr>
             <div class="row">
-            <form action="http://wakmimpi.com/home/search_buku_mimpi" method="GET">
-                <div class="form-group col-md-2">
-                   <select name="jenis_game" class="form-control">
-                       <option value="">Games All</option>
-                       <option value="2d">2D</option>
-                       <option value="3d">3D</option>
-                       <option value="4d">4D</option>
-                   </select>
-                </div>
-                <div class="form-group col-md-8">
-                    <input type="text" value="" class="form-control" name="keterangan" placeholder="Keterangan">
-                </div>
-                <div class="form-group col-md-2">
-                <input type="submit" class="btn btn-primary">
-                </div>
-            </form>
+            <form action="buku_mimpi.php" method="GET">
+                    <div class="form-group col-md-2">
+                        <select name="jenis_game" class="form-control">
+                            <option value="">Games All</option>
+                            <option value="2d">2D</option>
+                            <option value="3d">3D</option>
+                            <option value="4d">4D</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6 keterangans">
+                        <input type="text" value="" class="form-control" name="keterangan" placeholder="Keterangan">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input type="text" value="" class="form-control" name="nomor_game" placeholder="Nomor Game">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input type="submit" class="btn btn-primary" value="Cari">
+                        <input type="button" class="btn btn-primary" value="Reset" onClick="window.location.reload()">
+                    </div>
+                </form>
             </div>
             <div class="buku-mimpi-table">
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th scope="col">No.</th>
-                        <th scope="col">Keterangan</th>
+                        <th scope="col" class='trresize'>Keterangan</th>
                         <th scope="col">Jenis game</th>
                         <th scope="col">Nomor</th>
                     </tr>
                     </thead>
                     <tbody>
-                                            <tr>
-                            <td scope="row">1</td>
-                            <td>Kepala Rampok - Singa - Loncat Indah,Lompat - Kayu Manis - Kereta Api - Garu Langit</td>
-                            <td>2d</td>
-                            <td>444</td>
-                        </tr>
-                                            <tr>
-                            <td scope="row">2</td>
-                            <td>Putri Kipas Besi - Ikan Tenggiri - Garis Finish - Apokat,Alpukat - Sarung - Siti Sundari</td>
-                            <td>2d</td>
-                            <td>12</td>
-                        </tr>
-                                            <tr>
-                            <td scope="row">3</td>
-                            <td>Penyair - Tapir - Sempritan - Rembulan - Tanggalan - Kumbakarna</td>
-                            <td>2d</td>
-                            <td>1</td>
-                        </tr>
-                                            <tr>
-                            <td scope="row">4</td>
-                            <td>	Kepala Rampok - Singa - Loncat Indah,Lompat - Kayu Manis - Kereta Api - Garu Langit</td>
-                            <td>2d</td>
-                            <td>3</td>
-                        </tr>
+            <?php
+                $command='';            
+                $jenisgame=isset($_GET['jenis_game']) ? $_GET['jenis_game'] : '';
+                $keterangan=isset($_GET['keterangan']) ? $_GET['keterangan'] : '';
+                $nomor=isset($_GET['nomor_game']) ? $_GET['nomor_game'] : '';
+                
+                if($jenisgame !='' || $keterangan!='' || $nomor!=''){
+                    $command='1';
+                }
+                        
+                   if($command==''){
+                    include('db_connect.php');
+                    $sql = "Select * from `dreambook` order by no asc" ;
+                    $result = mysqli_query($conn,$sql);
+                    $a=1;
+                    while( $row = mysqli_fetch_assoc( $result ) ){
+                        
+            echo "
+            <tr>
+              <td id='1'>$a</td>
+              <td class='trresize'>".$row['detail']."</td>
+              <td>".$row['type']."</td>
+              <td>".$row['nomor']."</td>
+            </tr>";
+                    $a++;
+                    }
+                   }else{
+                       
+                    include('db_connect.php');
+                    $sql = "Select * from `dreambook`";
+                    $isfirst='';
+                    if($jenisgame!='' && $isfirst==''){
+                        $sql = $sql." where type like '%".$jenisgame."%'";
+                        $isfirst='1';
+                    }else{
+                           
+                    }
+                       
+                    if($keterangan!='' && $isfirst==''){
+                        $sql = $sql." where detail like '%".$keterangan."%'";
+                        $isfirst='1';
+                    }
+                    else if($keterangan!='' && $isfirst='1'){
+                        $sql = $sql." and detail like '%".$keterangan."%'";
+                        $isfirst='1';   
+                    }else if($keterangan=='' && $isfirst=='1'){
+                        
+                    }
+                    else{
+                           
+                    }
+                       
+                    if($nomor!='' && $isfirst==''){
+                        $sql = $sql." where nomor like '%".$nomor."%'";
+                        $isfirst='1';
+                    }
+                    else if($nomor!='' && $isfirst=='1'){
+                        $sql = $sql." and nomor like '%".$keterangan."%'";
+                        $isfirst='1';   
+                    }else if($nomor=='' && $isfirst=='1'){
+                        
+                    }
+                    else{
+                           
+                    }
+                    $isfirst='';
+                    $result = mysqli_query($conn,$sql);
+                    $a=1;
+                    while( $row = mysqli_fetch_assoc( $result ) ){
+                        
+                echo "
+                <tr>
+                <td id='1'>$a</td>
+                <td>".$row['detail']."</td>
+                <td>".$row['type']."</td>
+                <td>".$row['nomor']."</td>
+            </tr>";
+                    $a++;
+                    }
+                   }
+                $command='';
+                $isfirst='';
+                    ?>
                                         </tbody>
                 </table>
             </div>

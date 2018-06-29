@@ -35,6 +35,46 @@
         <link href="../css/ezslots.css" rel="stylesheet" type="text/css" />
   
    </head>
+   <style>
+    .hasil{
+           width: 95%;
+           height: 350px;
+           margin:  0 auto;
+           margin-top: 5%;
+           border-radius: 5px;
+           background-color: darkred;
+           padding: 8px;
+           padding-top: 15px;
+       }
+       .numbertheme{
+           overflow:hidden;
+           overflow-y:scroll;
+           height: 200px;
+           padding-left: 0;
+       }
+       .itemli, .itemliright{
+           float: left;
+           
+       }
+       .itemliright{
+           float: right;
+       }
+       .lili{
+           background-color: black;
+           opacity: 70%;
+           border-radius: 3px;
+           width: 100%;
+           padding: 8px;
+           height: 36px;
+           margin-bottom: 5px;
+       }
+       .itemli{
+           margin: 0 auto;
+       }
+       .libackground{
+           background-color: black;
+       }
+    </style>
     <body>
         <div class="header">
              <div class="header-container">
@@ -52,7 +92,20 @@
             </div>
             <div class="header-info">
                     <p class="text-info"><span class="glyphicon glyphicon-bullhorn"></span>  Info Terkini :</p>
-                     <marquee class="text-marquee">Selamat datang di WAKmimpi. Kini telah hadir game terbaru kami, GAME SUWIT tradisional, Jadikanlah anda sebagai pemenang, mudah bukan? tunggu apalagi, gabung & raih kemenangan anda sekarang juga.
+                     <marquee class="text-marquee"><?php
+                         include('db_connect.php');
+                         $sql = "Select * from `header` where active=1" ;
+                         $result = mysqli_query($conn,$sql);
+                         if (!$result) {
+                            printf("Error: %s\n", mysqli_error($conn));
+                            exit();
+                         }
+                         else
+                         {
+                         $row=mysqli_fetch_array($result);
+                         echo $row['isi_berita'];
+                         }
+                         ?>
                 </marquee>
                 </div>
             <div class="jumbotron cont">
@@ -88,6 +141,28 @@
                                 tambah gitu disini
                                 -->
                             </div>
+                            <div class="hasil">
+                                    <p>&nbsp;&nbsp;<i class="far fa-calendar-alt"></i><b>&nbsp;&nbsp;Hasil Terakhir</b></p>
+                                    <hr>
+                                    <p>&nbsp;&nbsp;<?php
+                                        echo date("d F Y");
+                                        ?></p>
+                                    <ul class="numbertheme" style="list-style-type: none;">
+                                           <?php
+                        $time = strtotime(date("d F Y"));
+                        $tanggalbiasa = date("Y-m-d h:i:s", $time);
+                    include('db_connect.php');
+                    $sql = "Select * from `togel` where fulldate='".$tanggalbiasa."' order by fulldate asc" ;
+                    $result = mysqli_query($conn,$sql);
+                    $a=1;
+                    while( $row = mysqli_fetch_assoc( $result ) ){
+                            echo "<li class='lili'><div class='libackground'><div class='itemli'>".$row['type']."</div><div class='itemliright'>".$row['result']."</div></div></li>
+                                ";
+                    $a++;
+                    }
+                    ?>
+                                    </ul>
+                                </div>
                         </div>
                         <div class="col-md-9 content-wrap htp">
                         <div class="container">

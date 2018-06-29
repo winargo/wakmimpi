@@ -469,7 +469,6 @@ $_SESSION["error"]="";
         <label>Description</label>
         <p>game hiburan keluarga</p>
     </div>
-            <a href="../edit_service/edit_meta.php" class="btn btn-primary">Edit</a
     </div>
 <style>
     #form_meta textarea

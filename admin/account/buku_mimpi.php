@@ -1,9 +1,10 @@
 <!DOCTYPE html>
  <?php
-error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+//error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
     session_start();
     include("blockadmin.php");
-$_SESSION["error"]="";
+    $_SESSION["error"]="";
+    $command='';
     ?>
 <html>
 <head>
@@ -408,6 +409,26 @@ $_SESSION["error"]="";
         background-color: #4CAF50;
     }
 
+    #notbutton{
+        background: none;
+        border: none;
+    }
+    #notbutton {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    #notbutton:hover {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
 </style>
 
 <body>
@@ -466,7 +487,16 @@ $_SESSION["error"]="";
         <hr>
         <div class="left">
             <div class="row">
-                <form action="#" method="GET">
+               <?php
+                $jenisgame=isset($_GET['jenis_game']) ? $_GET['jenis_game'] : '';
+                $keterangan=isset($_GET['keterangan']) ? $_GET['keterangan'] : '';
+                $nomor=isset($_GET['nomor_game']) ? $_GET['nomor_game'] : '';
+                
+                if($jenisgame !='' || $keterangan!='' || $nomor!=''){
+                    $command='1';
+                }
+                ?>
+                <form action="buku_mimpi.php" method="GET">
                     <div class="form-group col-md-2">
                         <select name="jenis_game" class="form-control">
                             <option value="">Games All</option>
@@ -482,7 +512,8 @@ $_SESSION["error"]="";
                         <input type="text" value="" class="form-control" name="nomor_game" placeholder="Nomor Game">
                     </div>
                     <div class="form-group col-md-2">
-                        <input type="submit" class="btn btn-primary">
+                        <input type="submit" class="btn btn-primary" value="Cari">
+                        <input type="button" class="btn btn-primary" value="Reset" onClick="window.location.reload()">
                     </div>
                 </form>
             </div>
@@ -497,71 +528,132 @@ $_SESSION["error"]="";
             <table class="table">
                 <tr>
                     <th>No</th>
-                    <th>Jenis Game</th>
                     <th>Keterangan</th>
+                    <th>Jenis Game</th>
                     <th>Nomor</th>
                     <th>Action</th>
                 </tr>
-                                    <tr>
-                        <td>1</td>
-                        <td>2d</td>
-                        <td>Kepala Rampok - Singa - Loncat Indah,Lompat - Kayu Manis - Kereta Api - Garu Langit</td>
-                        <td>444</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_bukumimpi.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
+                         
+                                       <?php
+                   if($command==''){
+                    include('db_connect.php');
+                    $user=$_SESSION["adminname"];
+                    $sql = "Select * from `dreambook` order by no asc" ;
+                    $result = mysqli_query($conn,$sql);
+                    $a=1;
+                    while( $row = mysqli_fetch_assoc( $result ) ){
+                        
+            echo "
+            <tr>
+              <td id='1'>$a</td>
+              <td>".$row['detail']."</td>
+              <td>".$row['type']."</td>
+              <td>".$row['nomor']."</td>
+              <td>
+            
+            <div class='dropdown'>
+                                <button class='dropbtn'>Pilih</button>
+                                <div class='dropdown-content'>
+                                    
+                                    <form id='submit1form' action='edit_dreambook.php' method='post'>
+                                        <input type='hidden' name='no_id' value='".$row['no']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a><button id='notbutton'  type='submit'>Edit</button></a>
+                                        
+                                    </form>
+                                    <form id='submit3form' action='delete_dreambook.php' method='post'>
+                                        <input type='hidden' name='no_id' value='".$row['no']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Delete</button></a>
+                                        
+                                    </form>
                                 </div>
                             </div>
-                        </td>
-                    </tr>
-                                    <tr>
-                        <td>2</td>
-                        <td>2d</td>
-                        <td>Putri Kipas Besi - Ikan Tenggiri - Garis Finish - Apokat,Alpukat - Sarung - Siti Sundari</td>
-                        <td>12</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_bukumimpi.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
+            
+            </td>
+            </tr>";
+                    $a++;
+                    }
+                   }else{
+                       
+                    include('db_connect.php');
+                    $user=$_SESSION["adminname"];
+                    $sql = "Select * from `dreambook`";
+                    $isfirst='';
+                    if($jenisgame!='' && $isfirst==''){
+                        $sql = $sql." where type like '%".$jenisgame."%'";
+                        $isfirst='1';
+                    }else{
+                           
+                    }
+                       
+                    if($keterangan!='' && $isfirst==''){
+                        $sql = $sql." where detail like '%".$keterangan."%'";
+                        $isfirst='1';
+                    }
+                    else if($keterangan!='' && $isfirst='1'){
+                        $sql = $sql." and detail like '%".$keterangan."%'";
+                        $isfirst='1';   
+                    }else if($keterangan=='' && $isfirst=='1'){
+                        
+                    }
+                    else{
+                           
+                    }
+                       
+                    if($nomor!='' && $isfirst==''){
+                        $sql = $sql." where nomor like '%".$nomor."%'";
+                        $isfirst='1';
+                    }
+                    else if($nomor!='' && $isfirst=='1'){
+                        $sql = $sql." and nomor like '%".$keterangan."%'";
+                        $isfirst='1';   
+                    }else if($nomor=='' && $isfirst=='1'){
+                        
+                    }
+                    else{
+                           
+                    }
+                    $isfirst='';
+                    $result = mysqli_query($conn,$sql);
+                    $a=1;
+                    while( $row = mysqli_fetch_assoc( $result ) ){
+                        
+                echo "
+                <tr>
+                <td id='1'>$a</td>
+                <td>".$row['detail']."</td>
+                <td>".$row['type']."</td>
+                <td>".$row['nomor']."</td>
+                <td>
+            
+                <div class='dropdown'>
+                    <button class='dropbtn'>Pilih</button>
+                                <div class='dropdown-content'>
+                                    
+                                    <form id='submit1form' action='edit_dreambook.php' method='post'>
+                                        <input type='hidden' name='no_id' value='".$row['no']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a><button id='notbutton'  type='submit'>Edit</button></a>
+                                        
+                                    </form>
+                                    <form id='submit3form' action='delete_dreambook.php' method='post'>
+                                        <input type='hidden' name='no_id' value='".$row['no']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Delete</button></a>
+                                        
+                                    </form>
                                 </div>
                             </div>
-                        </td>
-                    </tr>
-                                    <tr>
-                        <td>3</td>
-                        <td>2d</td>
-                        <td>Penyair - Tapir - Sempritan - Rembulan - Tanggalan - Kumbakarna</td>
-                        <td>1</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_bukumimpi.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                                    <tr>
-                        <td>4</td>
-                        <td>2d</td>
-                        <td>	Kepala Rampok - Singa - Loncat Indah,Lompat - Kayu Manis - Kereta Api - Garu Langit</td>
-                        <td>3</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_bukumimpi.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+            
+            </td>
+            </tr>";
+                    $a++;
+                    }
+                   }
+                $command='';
+                $isfirst='';
+                    ?>
                             </table>
         </div>
     </div>

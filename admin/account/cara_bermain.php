@@ -427,6 +427,18 @@ $_SESSION["error"]="";
     #content-table{
         margin-bottom: 200px;
     }
+    pre{
+        width: 700px;
+          font-family: inherit;
+          background: none;
+          color: black;
+          border: none;
+          white-space: pre-wrap;       /* Since CSS 2.1 */
+          white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+          white-space: -pre-wrap;      /* Opera 4-6 */
+          white-space: -o-pre-wrap;    /* Opera 7 */
+          word-wrap: break-word;   
+      }
 </style>
 
 <body>
@@ -514,7 +526,7 @@ $_SESSION["error"]="";
             <tr>
               <td id='1'>$a</td>
               <td>".$row['judul']."</td>
-              <td><pre>".$row['steps']."</pre></td>
+              <td><pre class='pretext'>".$row['steps']."</pre></td>
               ";
                         if($row['isactive']==1){
                             echo "<td><b style='color:green ;'>Active</b></td>";

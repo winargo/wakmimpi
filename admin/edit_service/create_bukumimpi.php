@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+session_start();
+    include("blockadmin.php");
 <head>
     <title>Wakmimpi</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -408,8 +410,11 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
         <ul class="nav sidebar-nav">
             <li class="sidebar-brand">
-                <a href="#">
-                    adminjr                </a>
+                <a href="list_accounts.php">
+                    <?php 
+                    echo 'Welcome, ';
+                    echo $_SESSION['adminname'] ;
+                    ?>                </a>
             </li>
             <li>
                 <a href="../account/list_accounts.php">Account</a>
@@ -436,7 +441,7 @@
                 <a href="../account/daftar_banner.php">Banner</a>
             </li>
             <li>
-                <a href="#">Log Out</a>
+                <a href="../account/logout.php">Log Out</a>
             </li>
         </ul>
     </nav>
@@ -451,10 +456,10 @@
         </button>
 <div class="container">
     <h2>Tambahkan Buku Mimpi</h2>
-    <form action="" method="post">
+    <form action="create_bukumimpiadd.php" method="post">
         <div class="form-group">
             <label>Jenis Game</label>
-            <select class="form-control" name="jenis_game">
+            <select class="form-control" name="jenis_game" required>
                 <option value="">Pilih</option>
                 <option value="2d">2D</option>
                 <option value="3d">3D</option>
@@ -465,17 +470,16 @@
 
         <div class="form-group">
             <label>Nomor</label>
-            <input type="text" class="form-control" name="nomor_game" value="">
+            <input type="text" class="form-control" name="nomor_game" value="" required>
             <span class="form_error"></span>
         </div>
 
         <div class="form-group">
             <label>Keterangan</label>
-            <input type="text" class="form-control" name="keterangan" value="">
+            <input type="text" class="form-control" name="keterangan" value="" required>
             <span class="form_error"></span>
         </div>
 
         <input type="submit" class="btn btn-primary">
-        </div>
     </form>
 </div>

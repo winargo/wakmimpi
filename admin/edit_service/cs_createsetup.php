@@ -56,5 +56,3 @@
               <td>{$row\['employee_sal'\]}</td> 
             </tr>\n";
           }-->
-    </body>
-</html>

@@ -407,7 +407,29 @@ $_SESSION["error"]="";
         border: 1px solid #ddd;
         background-color: #4CAF50;
     }
-
+    #enlargerdate{
+        width: 160px;
+    }
+    #notbutton{
+        background: none;
+        border: none;
+    }
+    #notbutton {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    #notbutton:hover {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: auto;
+    }
 </style>
 
 <body>
@@ -466,27 +488,6 @@ $_SESSION["error"]="";
         <hr>
         <div class="left">
             <div class="row">
-                <form action="" method="GET">
-                    <div class="form-group col-md-2">
-                        <select name="pool_type" class="form-control">
-                            <option value="">Pilih Pool</option>
-                                                            <option value="1">SYDNEY POOL</option>
-                                                            <option value="2">HONGKONG POOL</option>
-                                                            <option value="3">SINGAPORE POOL</option>
-                                                            <option value="4">JAKARTA POOL</option>
-                                                            <option value="18">MACAU POOL</option>
-                                                    </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <input type="text" value="" class="form-control" name="number_out" placeholder="Nomor">
-                    </div>
-                    <div class="form-group col-md-2">
-                        <input class="form-control" type="date" name="date" value="" placeholder="Tanggal">
-                    </div>
-                    <div class="form-group col-md-2">
-                        <input type="submit" class="btn btn-primary">
-                    </div>
-                </form>
             </div>
         </div>
         <div class="col-md-12">
@@ -506,114 +507,68 @@ $_SESSION["error"]="";
                     <th>Tipe Pool</th>
                     <th>Action</th>
                 </tr>
-                                    <tr>
-                        <td>1</td>
-                        <td>Friday</td>
-                        <td>2018-01-05</td>
-                        <!--<td></td>-->
-                        <td>1568</td>
-                        <td>SINGAPORE POOL</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_number.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
+                              <?php
+                   if($command==''){
+                    include('db_connect.php');
+                    $user=$_SESSION["adminname"];
+                    $sql = "Select * from `togel` order by fulldate" ;
+                    $result = mysqli_query($conn,$sql);
+                    $a=1;
+                    while( $row = mysqli_fetch_assoc( $result ) ){
+                        
+            echo "
+                <tr>
+                <td id='1'>$a</td>";
+                // $datetime is something like: 2014-01-31 13:05:59
+                        $time = strtotime($row['fulldate']);
+                        $hari = date("l", $time);
+                        $tanggalbiasa = date("j-n-Y", $time);
+// $myFormatForView is something like: 01/31/14 1:05 PM        
+                echo"
+                
+                <td>".$hari."</td>
+                <td>".$tanggalbiasa."</td>
+                <td>".$row['result']."</td>
+                <td>".$row['type']."</td>
+                <td>
+            
+            <div class='dropdown'>
+                                <button class='dropbtn'>Pilih</button>
+                                <div class='dropdown-content'>
+                                    
+                                    <form id='submit1form' action='../edit_service/edit_number.php' method='post'>
+                                        <input type='hidden' name='type' value='".$row['type']."'>
+                                        <input type='hidden' name='datepass' value='".$tanggalbiasa."'>
+                                        <input type='hidden' name='daypass' value='".$hari."'>
+                                        
+                                        <input type='hidden' name='tanggal' value='".$row['fulldate']."'>
+                                        <input type='hidden' name='nomor' value='".$row['result']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a><button id='notbutton'  type='submit'>Edit</button></a>
+                                        
+                                    </form>
+                                    <form id='submit3form' action='../edit_service/delete_number.php' method='post'>
+                                        <input type='hidden' name='datepass' value='".$tanggalbiasa."'>
+                                        <input type='hidden' name='daypass' value='".$hari."'>
+                                        <input type='hidden' name='type' value='".$row['type']."'>
+                                        <input type='hidden' name='tanggal' value='".$row['fulldate']."'>
+                                        <input type='hidden' name='nomor' value='".$row['result']."'>
+                                        <input type='hidden' name='command' value='clear'>
+                                        <a onclick='return confirm('are you sure to DELETE ?')'><button id='notbutton' type='submit' >Delete</button></a>
+                                        
+                                    </form>
                                 </div>
                             </div>
-                            </ul>
-                        </td>
-                    </tr>
-                                    <tr>
-                        <td>2</td>
-                        <td>Friday</td>
-                        <td>2018-01-05</td>
-                        <!--<td></td>-->
-                        <td>7564</td>
-                        <td>JAKARTA POOL</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_number.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
-                                </div>
-                            </div>
-                            </ul>
-                        </td>
-                    </tr>
-                                    <tr>
-                        <td>3</td>
-                        <td>Friday</td>
-                        <td>2018-01-05</td>
-                        <!--<td></td>-->
-                        <td>5543</td>
-                        <td>MACAU POOL</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_number.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
-                                </div>
-                            </div>
-                            </ul>
-                        </td>
-                    </tr>
-                                    <tr>
-                        <td>4</td>
-                        <td>Wednesday</td>
-                        <td>2018-01-03</td>
-                        <!--<td></td>-->
-                        <td>2020</td>
-                        <td>HONGKONG POOL</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_number.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
-                                </div>
-                            </div>
-                            </ul>
-                        </td>
-                    </tr>
-                                    <tr>
-                        <td>5</td>
-                        <td>Wednesday</td>
-                        <td>2018-01-03</td>
-                        <!--<td></td>-->
-                        <td>1111</td>
-                        <td>SYDNEY POOL</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_number.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
-                                </div>
-                            </div>
-                            </ul>
-                        </td>
-                    </tr>
-                                    <tr>
-                        <td>6</td>
-                        <td>Tuesday</td>
-                        <td>2018-01-02</td>
-                        <!--<td></td>-->
-                        <td>1234</td>
-                        <td>SYDNEY POOL</td>
-                        <td>
-                            <div class="dropdown">
-                                <button class="dropbtn">Action</button>
-                                <div class="dropdown-content">
-                                    <a href="../edit_service/edit_number.php">Edit</a>
-                                    <a href="#"onclick= "return confirm('are you sure to DELETE ?')">Delete</a>
-                                </div>
-                            </div>
-                            </ul>
-                        </td>
-                    </tr>
+            
+            </td>
+            </tr>";
+                    $a++;
+                    }
+                   }else{
+                   }
+                $command='';
+                $isfirst='';
+                    ?>
                             </table>
         </div>
     </div>

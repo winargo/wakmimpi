@@ -449,7 +449,7 @@ if($_POST['username']=="" || $_POST['username']==null){
                 <a href="./daftar_banner.php">Banner</a>
             </li>
             <li>
-                <a href="#">Log Out</a>
+                <a href="./logout.php">Log Out</a>
             </li>
         </ul>
     </nav>

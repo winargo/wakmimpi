@@ -440,7 +440,7 @@
                 <a href="../account/daftar_banner.php">Banner</a>
             </li>
             <li>
-                <a href="#">Log Out</a>
+                <a href="../account/logout.php">Log Out</a>
             </li>
         </ul>
     </nav>

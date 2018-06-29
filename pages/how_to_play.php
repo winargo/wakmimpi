@@ -33,7 +33,88 @@
         <script src="../js/ezslots.js"></script>
         
         <link href="../css/ezslots.css" rel="stylesheet" type="text/css" />
-  
+  <style>
+      .btn-small{
+          border-radius: 4px;
+          width: 120px;
+          background-color: #bbaa55;
+          color: white;
+          margin-bottom: 10;
+      }
+      .btn-small:hover{
+          
+          width:  120px;
+          border-radius: 4px;
+          background-color: #bbaa55;
+          color: white;
+          margin-bottom: 10;
+      }
+      .rebutton{
+              margin-top: -3;
+        border: none;
+      }
+      .rebutton:hover{
+              margin-top: -3;
+        border: none;
+      }
+      form{
+          width: 120px;
+          height: 35px;
+      }
+      form:hover{
+          width: 120px;
+          height: 35px;
+      }
+      .pretext{
+          font-family: inherit;
+          background: none;
+          color: white;
+          border: none;
+          white-space: pre-wrap;       /* Since CSS 2.1 */
+          white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+          white-space: -pre-wrap;      /* Opera 4-6 */
+          white-space: -o-pre-wrap;    /* Opera 7 */
+          word-wrap: break-word;   
+      }
+      .hasil{
+           width: 95%;
+           height: 350px;
+           margin:  0 auto;
+           margin-top: 5%;
+           border-radius: 5px;
+           background-color: darkred;
+           padding: 8px;
+           padding-top: 15px;
+       }
+       .numbertheme{
+           overflow:hidden;
+           overflow-y:scroll;
+           height: 200px;
+           padding-left: 0;
+       }
+       .itemli, .itemliright{
+           float: left;
+           
+       }
+       .itemliright{
+           float: right;
+       }
+       .lili{
+           background-color: black;
+           opacity: 70%;
+           border-radius: 3px;
+           width: 100%;
+           padding: 8px;
+           height: 36px;
+           margin-bottom: 5px;
+       }
+       .itemli{
+           margin: 0 auto;
+       }
+       .libackground{
+           background-color: black;
+       }
+       </style>
    </head>
     <body>
         <div class="header">
@@ -52,7 +133,21 @@
             </div>
             <div class="header-info">
                     <p class="text-info"><span class="glyphicon glyphicon-bullhorn"></span>  Info Terkini :</p>
-                     <marquee class="text-marquee">Selamat datang di WAKmimpi. Kini telah hadir game terbaru kami, GAME SUWIT tradisional, Jadikanlah anda sebagai pemenang, mudah bukan? tunggu apalagi, gabung & raih kemenangan anda sekarang juga.
+                     <marquee class="text-marquee">
+                        <?php
+                         include('db_connect.php');
+                         $sql = "Select * from `header` where active=1" ;
+                         $result = mysqli_query($conn,$sql);
+                         if (!$result) {
+                            printf("Error: %s\n", mysqli_error($conn));
+                            exit();
+                         }
+                         else
+                         {
+                         $row=mysqli_fetch_array($result);
+                         echo $row['isi_berita'];
+                         }
+                         ?>
                 </marquee>
                 </div>
             <div class="jumbotron cont">
@@ -88,72 +183,79 @@
                                 tambah gitu disini
                                 -->
                             </div>
+                            <div class="hasil">
+                                    <p>&nbsp;&nbsp;<i class="far fa-calendar-alt"></i><b>&nbsp;&nbsp;Hasil Terakhir</b></p>
+                                    <hr>
+                                    <p>&nbsp;&nbsp;<?php
+                                        echo date("d F Y");
+                                        ?></p>
+                                    <ul class="numbertheme" style="list-style-type: none;">
+                                           <?php
+                        $time = strtotime(date("d F Y"));
+                        $tanggalbiasa = date("Y-m-d h:i:s", $time);
+                    include('db_connect.php');
+                    $sql = "Select * from `togel` where fulldate='".$tanggalbiasa."' order by fulldate asc" ;
+                    $result = mysqli_query($conn,$sql);
+                    $a=1;
+                    while( $row = mysqli_fetch_assoc( $result ) ){
+                            echo "<li class='lili'><div class='libackground'><div class='itemli'>".$row['type']."</div><div class='itemliright'>".$row['result']."</div></div></li>
+                                ";
+                    $a++;
+                    }
+                    ?>
+                                    </ul>
+                                </div>
                         </div>
                         <div class="col-md-9 content-wrap htp">
                         <div class="container">
                             <h3>Cara Bermain</h3>
-                            <hr/>
-                            <h4>Nomor Keluar</h4>
-                            <p>
-                            nomor pengeluaran adalah berdasar kan 1st prize nomor yang dihasilkan oleh 4D Singapore untuk melihat hasil nomor<br/> tersebut bisa dilihat di www.toto.com.
-                                <br/>
-                                Contoh nomor bola angka yang dihasilkan Singapore toto:<br/>
-                                Bola 1 = 7 <br/>
-                                Bola 2 = 21 <br/>
-                                Bola 3 = 29 <br/>
-                                Bola 4 = 32 <br/>
-                                Bola 5 = 36 <br/>
-                                Bola 6 = 38 <br/>
-                                Additional Number = 04<br/> 
-
-                                Nomor buka 0885<br/>
-
-                                Cara perhitungan rumus:<br/><br/>
-
-                                    1.Bola di urutkan dari yang terkecil sampai yang terbesar.<br/>
-                                    2.Bola ke 1 sampai bola ke 6 dijumlahkan 7+21+29+32+36+38 = 163 di kali 2 = 326<br/>
-                                    3.Hasil dari 326 dikurangkan bola ke 1 ( 7 ) dan bola ke 6 ( 38 ) = 281<br/>
-                                    4.Sisa 281 ditambah additional number (04) = 285<br/>
-                                    5.Dari hasil 285, didapatkan 2 angka puluhan 85 tersebut. Setelah itu dicari angka ratusan dan ribuan nya.<br/>
-                                    6.Untuk mendapat angka ratusan kita mengambil dari bola ke 4 ( 32 ) ditambah bola ke 5 ( 36 ) jumlah = 68 kita ambil ekor 8 ini sebagai angka untuk ratusan<br/>
-                                    7.Untuk mendapat angka ribuan kita mengambil dari bola ke 2 ( 21 ) ditambah bola ke 3 ( 29 ) jumlah = 50 kita ambil ekor 0 ini sebagai angka untuk ribuan<br/>
-                                    <br/>
-                                Maka hasil perhitungan diatas:<br/> 
-                                Ribuan = 0 <br/>
-                                Ratusan = 8 <br/>
-                                Puluhan = 85 <br/>
-                                <br/>
-                                Hasilnya = buka 0885<br/>
-
-                                Untuk melihat hasil dari perputaran nomor untuk toto Jakarta ini bisa dilihat di website resminya www.toto.com.<br/>
-
-                                Untuk togel jenis 4D Jakarta pengeluaran setiap hari kami mengambil pedoman sebagai nomor pengeluaran adalah berdasar kan 1st prize nomor yang dihasilkan oleh 4D Jakarta untuk melihat hasil nomor tersebut bisa dilihat di www.toto.com.<br/>
-
-                                JENIS PERMAINAN<br/>
-
-                                Jenis permainan togel sudah sangat banyak, sudah membaur dan menyesuaikan diri dengan permainan lokal. Alhasil dikenal beberapa karakteristik togel daerah.<br/>
-
-                                Jenis permainan yang disajikan disini adalah:<br/>
-                                <br/>
-                                    1.4D, 3D dan 2D<br/>
-                                    2.Colok Bebas<br/>
-                                    3.Colok Bebas 2D<br/>
-                                    4.Colok Jitu<br/>
-                                    5.Colok Naga<br/>
-                                    6.50-50 (Besar-Kecil-Ganjil-Genap)<br/>
-                                    7.Shio<br/>
-                                    8.Kembang Kempis<br/>
-                                    9.Silang Homo<br/>
-                                    10.Tengah Tepi<br/>
-                                    11.Dasar (Besar-Kecil-Ganjil-Genap)<br/>
-                                    12.2 Kombinasi<br/>
-                                    <br/>
-                                Struktur nomor keluar (misalnya : A B C D), berarti:<br/> 
-                                A = AS <br/>
-                                B = KOP <br/>
-                                C = KEPALA <br/>
-                                D = EKOR<br/>
-                            </p>
+                            <hr>
+                            <div class="row">
+                    <div class="col-md-12 tabdrop" align="center">
+                     <?php
+                        include('db_connect.php');
+                    $sql = "Select * from `gameplay` where isactive=1" ;
+                    $result = mysqli_query($conn,$sql);
+                    $a=1;
+                    while( $row = mysqli_fetch_assoc( $result ) ){
+                        
+            echo "
+            <form method='post' class='btn margin-bottom-10' action='how_to_play.php'>
+            <input type='hidden' name='jenis_game' value='".$row['judul']."'>
+            <button type='submit' class='rebutton btn btn-small margin-bottom-10'>".$row['judul']."</button>
+            </form>
+            ";
+                    $a++;
+                        
+                    }
+                         echo "<hr>";
+                        $command=isset($_POST['jenis_game']) ? $_POST['jenis_game'] : '';
+                        if($command==''){
+                            $sql = "SELECT * FROM `gameplay` where isactive=1 LIMIT 1" ;
+                            $result = mysqli_query($conn,$sql);
+                            $a=1;
+                        while( $row = mysqli_fetch_assoc( $result ) ){        
+                            echo "<p class='pretext' align='left'>".$row['steps']."</p>";
+                        }
+                        }
+                       else{
+                           $sql = "Select * from `gameplay` where judul='".$_POST['jenis_game']."' LIMIT 1" ;
+                            $result = mysqli_query($conn,$sql);
+                            $a=1;
+                        while( $row = mysqli_fetch_assoc( $result ) ){        
+                            echo "<pre class='pretext' align='left'>".$row['steps']."</pre>";
+                       
+                         
+                    $a++;
+                        }
+                       }
+                        ?>
+                    </div>
+                  </div>
+                            
+                            <?php
+                            
+                            ?>
                         </div>
                         </div>
                     </div>

@@ -414,8 +414,11 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
         <ul class="nav sidebar-nav">
             <li class="sidebar-brand">
-                <a href="#">
-                    adminjr                </a>
+                <a href="list_accounts.php">
+                    <?php 
+                    echo 'Welcome, ';
+                    echo $_SESSION['adminname'] ;
+                    ?>                </a>
             </li>
             <li>
                 <a href="../account/list_accounts.php">Account</a>
@@ -442,7 +445,7 @@
                 <a href="../account/daftar_banner.php">Banner</a>
             </li>
             <li>
-                <a href="#">Log Out</a>
+                <a href="../account/logout.php">Log Out</a>
             </li>
         </ul>
     </nav>
